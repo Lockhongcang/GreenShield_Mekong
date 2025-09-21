@@ -1257,6 +1257,8 @@ a.btn .material-symbols-rounded {
   flex-direction: column;
   padding: 12px;
   transition: right 220ms ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .nav-drawer.open {
@@ -1465,21 +1467,6 @@ a.btn .material-symbols-rounded {
     height: 40px;
     display: grid;
     place-items: center;
-  }
-
-  .nav-mobile .nav-drawer {
-    position: absolute;
-    right: 12px;
-    top: calc(100% + 8px);
-    background: #f5f5f5;
-    border: 1px solid rgba(1, 50, 55, .12);
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
-    padding: 8px 12px;
-    list-style: none;
-    margin: 0;
-    display: grid;
-    gap: 6px;
   }
 
   .about-ticker__track {
@@ -1799,4 +1786,10 @@ a.btn .material-symbols-rounded {
   .community-scroller {
     grid-auto-columns: 90%;
   }
+}
+
+/* Inside the mobile drawer, always show language code and caret */
+.nav-drawer .lang-toggle-btn .lang-code,
+.nav-drawer .lang-toggle-btn .lang-caret {
+  display: inline-block !important;
 }
