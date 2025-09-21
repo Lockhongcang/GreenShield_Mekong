@@ -1521,6 +1521,8 @@ a.btn .material-symbols-rounded {
   display: flex;
   gap: 16px;
   align-items: stretch;
+  height: clamp(260px, 50vh, 420px);
+  overflow: hidden;
 }
 
 .stack-gallery.steps .stack-card {
@@ -1584,6 +1586,74 @@ a.btn .material-symbols-rounded {
   box-shadow: 0 2px 6px rgba(1, 50, 55, .15);
   user-select: none;
   pointer-events: none;
+}
+
+/* Responsive behavior for Products (steps) */
+@media (max-width: 1024px) {
+  .stack-gallery.steps {
+    height: clamp(240px, 45vh, 360px);
+  }
+}
+
+@media (max-width: 900px) {
+  .stack-gallery.steps {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    padding: 0 8px;
+  }
+
+  .stack-gallery.steps .stack-card {
+    min-width: 65%;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+
+  /* Neutralize hover-based flex growth for better swipe UX */
+  .stack-gallery.steps:hover .stack-card {
+    flex: 0 0 auto;
+  }
+
+  .stack-gallery.steps:hover .stack-card:hover {
+    flex: 0 0 auto;
+    box-shadow: var(--card-shadow);
+  }
+}
+
+@media (max-width: 640px) {
+  .stack-gallery.steps {
+    height: clamp(200px, 42vh, 300px);
+  }
+
+  .stack-gallery.steps .stack-card {
+    min-width: 85%;
+  }
+
+  .stack-gallery.steps .stack-card .stack-card__overlay {
+    padding: 1rem 1.25rem 1.25rem 1.25rem;
+  }
+
+  .steps-badge {
+    width: 28px;
+    height: 28px;
+    left: 1rem;
+    bottom: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Touch devices: ensure overlays are readable by default */
+@media (hover: none) {
+  .stack-gallery.steps .stack-card .stack-card__overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .stack-gallery.steps .stack-card {
+    filter: none;
+  }
 }
 
 /* (Removed old steps-rail styles; steps now use the stack-gallery pattern) */
