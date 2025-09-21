@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "home": "TRANG CHỦ",
+    "about": "GIỚI THIỆU",
+    "products": "SẢN PHẨM",
+    "advantages": "LỢI THẾ",
+    "mission": "SỨ MỆNH",
+    "community": "CỘNG ĐỒNG",
+    "contact": "LIÊN HỆ"
+  },
+  "ticker": {
+    "about": ["GIẢI PHÁP", "TÁI TẠO", "BỀN VỮNG"],
+    "advantages": ["Chi phí tối ưu", "Bền vững sinh học", "Kết quả chứng minh", "Minh bạch triển khai"],
+    "community": ["KẾT NỐI", "TÁC ĐỘNG", "XÃ HỘI"]
+  },
+  "home": {
+    "title": "Lá chắn xanh cho trái cây miền sông nước",
+    "subtitle": "Bao bì sinh học từ lục bình — sạch sông, bảo vệ hoa quả",
+    "bannerAlt": "banner showing fruits and eco packaging"
+  },
+  "cta": {
+    "explore": "Khám phá",
+    "contact": "Liên hệ",
+    "learnMore": "Tìm hiểu thêm"
+  },
+  "products": {
+    "title": "Sản phẩm & Công nghệ",
+    "stepsTitle": "Quy trình 5 bước"
+  },
+  "about": {
+    "title": "Tổng quan dự án",
+    "body": "GreenShield Mekong ra đời từ ý tưởng tận dụng lục bình và phụ phẩm địa phương để tạo bao bì sinh học cho trái cây. Mục tiêu của chúng tôi là giảm rác nhựa, làm sạch sông rạch và tạo sinh kế bền vững cho người dân; đồng thời đáp ứng yêu cầu vận chuyển – truy xuất của thị trường xuất khẩu. Khách hàng trọng tâm gồm hợp tác xã nông nghiệp và doanh nghiệp xuất khẩu cần giải pháp bao bì xanh, chi phí hợp lý.",
+    "features": {
+      "environment": {
+        "title": "Môi trường",
+        "desc": "Vật liệu sinh học phân hủy tự nhiên, giảm rác nhựa và làm sạch sông rạch."
+      },
+      "export": {
+        "title": "Sẵn sàng xuất khẩu",
+        "desc": "Thiết kế bền, đáp ứng kiểm thử logistics và yêu cầu truy xuất."
+      },
+      "jobs": {
+        "title": "Sinh kế địa phương",
+        "desc": "Liên kết nông hộ, tạo việc làm ổn định cho cộng đồng."
+      }
+    }
+  },
+  "advantages": {
+    "title": "Vì sao khách hàng tin chọn GreenShield Mekong",
+    "feature1": {
+      "title": "Chứng nhận chuyên gia",
+      "desc": "Quy trình được cố vấn bởi chuyên gia vật liệu sinh học & nông nghiệp."
+    },
+    "feature2": {
+      "title": "Hiệu quả đã kiểm chứng",
+      "desc": "Giảm hao hụt sau thu hoạch, duy trì chất lượng nông sản tốt hơn."
+    },
+    "feature3": {
+      "title": "Giải pháp đoạt giải",
+      "desc": "Được các quỹ đổi mới và cộng đồng khởi nghiệp ghi nhận."
+    },
+    "feature4": {
+      "title": "Đồng hành địa phương",
+      "desc": "Hợp tác xã nông dân tham gia, tạo việc làm tại chỗ."
+    },
+    "feature5": {
+      "title": "Hướng tới tiêu chuẩn quốc tế",
+      "desc": "Tương thích yêu cầu xanh của EU/Nhật/Mỹ trong chuỗi cung ứng."
+    }
+  },
+  "mission": {
+    "title": "Sứ mệnh của chúng tôi",
+    "kpis": [
+      {
+        "icon": "recycling",
+        "title": "500 tấn nhựa tránh phát sinh",
+        "desc": "Thay thế bao bì nhựa dùng một lần bằng vật liệu gốc sinh học."
+      },
+      {
+        "icon": "water_drop",
+        "title": "5.000 tấn sinh khối được tận dụng",
+        "desc": "Thu gom lục bình/bã sinh khối, góp phần làm sạch sông rạch."
+      },
+      {
+        "icon": "groups",
+        "title": "300+ việc làm địa phương",
+        "desc": "Hợp tác 20+ HTX, tạo công ăn việc làm ổn định cho người dân."
+      },
+      {
+        "icon": "factory",
+        "title": "20 triệu đơn vị/năm",
+        "desc": "Vận hành 3 dây chuyền bán công nghiệp, mở rộng quy mô bền vững."
+      }
+    ],
+    "commitmentsTitle": "Cam kết bền vững",
+    "commitments": [
+      "100% vật liệu gốc sinh học, an toàn tiếp xúc thực phẩm.",
+      "Truy xuất nguồn gốc, minh bạch tác động môi trường – xã hội.",
+      "Thiết kế để tái chế/ủ phân; ưu tiên sản xuất ít phát thải.",
+      "Hợp tác cùng nông dân/HTX, chia sẻ lợi ích công bằng.",
+      "Tuân thủ tiêu chuẩn xanh của EU/Nhật/Mỹ."
+    ]
+  },
+  "impact": {
+    "title": "Tối ưu hiệu quả với giải pháp xanh",
+    "a": {
+      "kicker": "Chứng nhận an toàn",
+      "value": "100%",
+      "label": "vật liệu gốc sinh học",
+      "desc": "An toàn tiếp xúc thực phẩm, thiết kế hướng tới ủ phân/tái chế."
+    },
+    "b": {
+      "kicker": "Tác động môi trường",
+      "value": "500 tấn",
+      "label": "nhựa tránh phát sinh",
+      "desc": "Mục tiêu 3 năm thông qua thay thế bao bì dùng một lần."
+    },
+    "c": {
+      "kicker": "Hợp tác triển khai",
+      "value": "20+",
+      "label": "hợp tác xã đối tác",
+      "desc": "Đồng hành địa phương, tạo việc làm bền vững."
+    },
+    "d": {
+      "kicker": "Năng lực sản xuất",
+      "value": "20 triệu",
+      "label": "đơn vị mỗi năm",
+      "desc": "Mục tiêu quy mô năm thứ 3 với 3 dây chuyền bán công nghiệp."
+    }
+  },
+  "community": {
+    "title": "Kết nối & tác động xã hội",
+    "pillars": {
+      "coop": {
+        "title": "Mô hình hợp tác",
+        "desc": "Hợp tác với HTX địa phương để thu gom và sơ chế lục bình — ưu tiên tuyển dụng phụ nữ nông thôn và lao động dễ bị tổn thương."
+      },
+      "training": {
+        "title": "Đào tạo kỹ thuật",
+        "desc": "Chương trình đào tạo sản xuất và quản lý chất lượng cho đối tác địa phương."
+      },
+      "digital": {
+        "title": "Truyền thông số",
+        "desc": "Kết nối QR → fanpage/website, kể câu chuyện ‘Made in Mekong’ lan tỏa giá trị xanh tới người tiêu dùng trẻ."
+      },
+      "esg": {
+        "title": "Hợp tác ESG",
+        "desc": "Kết nối tổ chức môi trường/quỹ ESG để mở rộng nguồn lực và hỗ trợ xuất khẩu."
+      }
+    },
+    "readMore": "Đọc thêm",
+    "teamTitle": "Đội ngũ & Đối tác",
+    "connect": "Kết nối với chúng tôi",
+    "socialBlurb": "Theo dõi chúng tôi để cập nhật",
+    "qrTitle": "Quét QR để xem trang",
+    "join": "Tham gia cộng đồng",
+    "joinBtn": "Tham gia",
+    "testimonialsTitle": "Phản hồi từ cộng đồng"
+    },
+  "footer": {
+    "tagline": "Lá chắn xanh cho trái cây miền sông nước",
+    "services": {
+      "title": "Chúng tôi cung cấp",
+      "items": [
+        "Mô hình hợp tác",
+        "Đào tạo kỹ thuật",
+        "Truyền thông số",
+        "Hợp tác ESG"
+      ]
+    },
+    "contact": {
+      "title": "Liên hệ với chúng tôi",
+      "address": "TP Cần Thơ, Việt Nam",
+      "phone": "+84 97 000 0000",
+      "email": "greenshieldmekong@gmail.com"
+    }
+  }
+}
