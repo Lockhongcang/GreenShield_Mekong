@@ -1,5 +1,5 @@
 // src/components/Nav.jsx
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LanguageToggle from './LanguageToggle'
 import { useTranslation } from 'react-i18next'
 
@@ -17,7 +17,14 @@ export default function Nav() {
   const { t } = useTranslation()
   const [activeId, setActiveId] = useState('home')
   const [open, setOpen] = useState(false)
-  const isNarrow = useMemo(() => (typeof window !== 'undefined' ? window.innerWidth < 1024 : false), [])
+  const [isNarrow, setIsNarrow] = useState(() => (typeof window !== 'undefined' ? window.innerWidth < 768 : false))
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const onResize = () => setIsNarrow(window.innerWidth < 768)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(

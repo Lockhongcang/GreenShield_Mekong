@@ -860,8 +860,14 @@ p, .ant-typography, .ant-typography p { font-size: clamp(0.95rem, 1.4vw, 1.05rem
   gap: 0.25rem;
 }
 
-/* Hide header lang on small screens; it lives in the drawer */
-@media (max-width: 1024px) {
+/* Under 1200px: hide the long wordmark and language code/caret; keep only the flag */
+@media (max-width: 1199px) {
+  .header-logo img:nth-child(2) { display: none; }
+  .lang-toggle-btn .lang-code, .lang-toggle-btn .lang-caret { display: none !important; }
+}
+
+/* Hide header lang on truly small screens (<768); it lives in the drawer */
+@media (max-width: 767px) {
   .header-lang { display: none; }
 }
 

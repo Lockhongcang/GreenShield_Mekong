@@ -13,11 +13,11 @@ const MSRIcon = ({ name, color = 'var(--color-bg)', size = 32 }) => (
 )
 
 const steps = [
-  { key:'collect', img:'/src/assets/step1.jpg', label:'Thu gom', desc:'Lục bình, bã mía và giấy tái chế được thu thập từ địa phương.' },
-  { key:'process', img:'/src/assets/step2.jpg', label:'Sơ chế', desc:'Nguyên liệu được làm sạch, nghiền nhỏ và phối trộn theo tỉ lệ.' },
-  { key:'mold', img:'/src/assets/step3.jpg', label:'Ép khuôn', desc:'Hỗn hợp được đưa vào khuôn để tạo hình (khay, hộp, tấm lót).' },
-  { key:'coat', img:'/src/assets/step4.jpg', label:'Phủ bảo vệ', desc:'Phủ lớp sáp ong tự nhiên để tăng khả năng chống ẩm và bền hơn.' },
-  { key:'pack', img:'/src/assets/step5.jpg', label:'Đóng gói & phân phối', desc:'Sản phẩm hoàn thiện được kiểm tra, đóng gói và giao đến khách hàng.' },
+  { key:'collect', img:'https://res.cloudinary.com/dnini39bp/image/upload/fl_preserve_transparency/v1758473569/step1_lpzong.jpg?_s=public-apps', label:'Thu gom', desc:'Lục bình, bã mía và giấy tái chế được thu thập từ địa phương.' },
+  { key:'process', img:'https://res.cloudinary.com/dnini39bp/image/upload/fl_preserve_transparency/v1758473883/step2_gtwxjw.jpg?_s=public-apps', label:'Sơ chế', desc:'Nguyên liệu được làm sạch, nghiền nhỏ và phối trộn theo tỉ lệ.' },
+  { key:'mold', img:'https://res.cloudinary.com/dnini39bp/image/upload/fl_preserve_transparency/v1758473922/step3_b6mhei.jpg?_s=public-apps', label:'Ép khuôn', desc:'Hỗn hợp được đưa vào khuôn để tạo hình (khay, hộp, tấm lót).' },
+  { key:'coat', img:'https://res.cloudinary.com/dnini39bp/image/upload/fl_preserve_transparency/v1758473958/step4_glbpzp.jpg?_s=public-apps', label:'Phủ bảo vệ', desc:'Phủ lớp sáp ong tự nhiên để tăng khả năng chống ẩm và bền hơn.' },
+  { key:'pack', img:'https://res.cloudinary.com/dnini39bp/image/upload/fl_preserve_transparency/v1758474007/step5_joypvu.jpg?_s=public-apps', label:'Đóng gói & phân phối', desc:'Sản phẩm hoàn thiện được kiểm tra, đóng gói và giao đến khách hàng.' },
 ]
 
 export default function ProductsSection(){

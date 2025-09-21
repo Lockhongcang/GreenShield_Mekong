@@ -10,6 +10,7 @@ import MissionSection from './sections/MissionSection'
 import ContactSection from './sections/ContactSection'
 import CommunitySection from './sections/CommunitySection'
 import logo from './assets/logo.png';
+import logolg from './assets/logo-lg.png';
 import BackToTop from './components/BackToTop'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <header className="header">
         <div className='header-logo'>
           <img src={logo} alt="greenshield logo" width="24" />
+          <img className="logo-lg" src={logolg} alt="greenshield name" width="100" />
         </div>
 
         <div className='header-nav'>

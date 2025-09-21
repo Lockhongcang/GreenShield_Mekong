@@ -51,6 +51,7 @@ export default function LanguageToggle() {
         type="text"
         aria-haspopup="true"
         aria-label="Language switcher"
+        className="lang-toggle-btn"
         style={{ padding: '6px 10px', fontWeight: 600, display: 'inline-flex', alignItems: 'center' }}
       >
         <Space size="small" align="center">
@@ -62,8 +63,8 @@ export default function LanguageToggle() {
             aria-hidden={false}
             aria-label={currentIsVi ? 'Vietnam flag' : 'United Kingdom flag'}
           />
-          <span>{currentIsVi ? 'VI' : 'EN'}</span>
-          <DownOutlined />
+          <span className="lang-code">{currentIsVi ? 'VI' : 'EN'}</span>
+          <span className="lang-caret"><DownOutlined /></span>
         </Space>
       </Button>
     </Dropdown>
