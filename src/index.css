@@ -85,10 +85,7 @@ p,
 }
 
 
-/* Avoid messing Home banner heading sizes; banner has its own styles */
-.banner p {
-  font-size: 1.5rem;
-}
+/* banner has its own styles; see detailed rule below */
 
 /* shared container utility */
 .container {
@@ -140,7 +137,7 @@ p,
 .section#about,
 .section#advantages,
 .section#mission {
-  background: white;
+  background: #f5f5f5;
 }
 
 .section#community {
@@ -153,7 +150,7 @@ p,
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(245, 245, 245, 0.9);
   pointer-events: none;
   z-index: 0;
 }
@@ -176,8 +173,10 @@ p,
 .contact-footer {
   width: min(95%, var(--max-width));
   margin: 0 auto;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
+  min-height: calc(100vh - 5rem);
 }
 
 .newsletter-panel {
@@ -277,7 +276,7 @@ p,
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: #fff;
+  background: #f5f5f5;
   color: var(--color-dark);
   border: 1px solid rgba(1, 50, 55, .12);
   transition: transform 160ms ease, box-shadow 160ms ease;
@@ -361,12 +360,12 @@ p,
   margin: 6px 0;
 }
 
-.footer-bottom {
-  margin-top: 16px;
-}
+.contact-body { flex: 1; display: grid; place-items: center; }
+.footer-bottom { margin-top: 0; }
 
 .footer-hr {
-  height: 1px;
+  margin: 2rem 0;
+  height: 2px;
   background: rgba(1, 50, 55, .2);
 }
 
@@ -540,7 +539,7 @@ p,
 
 /* adv-card in advantages board */
 .adv-card {
-  background: #fff;
+  background: #f5f5f5;
   border-radius: 18px;
   padding: 14px 14px 16px 14px;
   border: var(--border);
@@ -671,7 +670,7 @@ p,
 /* scope carousel card to avoid clashing with advantages board cards */
 .adv-carousel .adv-card {
   position: relative;
-  background: #fff;
+  background: #f5f5f5;
   border-radius: 16px;
   border: 6px solid var(--color-primary);
   padding: 28px 28px 56px 28px;
@@ -752,7 +751,7 @@ p,
 }
 
 .adv-carousel .adv-controls .arrow {
-  background: #fff;
+  background: #f5f5f5;
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
   width: 40px;
@@ -832,7 +831,7 @@ p,
 
 /* Impact (ROI-like bento) */
 .section--impact {
-  background: #fff;
+  background: #f5f5f5;
 }
 
 .impact-wrap {
@@ -1026,7 +1025,7 @@ p,
   align-items: center;
   z-index: 40;
   gap: 1rem;
-  background: white;
+  background: #f5f5f5;
   padding: 0.75rem 1rem;
   border-radius: var(--border-radius);
   box-shadow: var(--elev-sm);
@@ -1229,7 +1228,7 @@ a.btn .material-symbols-rounded {
 }
 
 .nav-mobile .burger {
-  background: #fff;
+  background: #f5f5f5;
   border: 1px solid rgba(1, 50, 55, .12);
   border-radius: 10px;
   width: 40px;
@@ -1251,7 +1250,7 @@ a.btn .material-symbols-rounded {
   right: -100%;
   width: min(80vw, 320px);
   height: 100vh;
-  background: #fff;
+  background: #f5f5f5;
   box-shadow: -8px 0 24px rgba(1, 50, 55, .2);
   z-index: 70;
   display: flex;
@@ -1412,7 +1411,7 @@ a.btn .material-symbols-rounded {
 .stack-card .stack-card__label {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(245, 245, 245, 0.85);
   color: var(--color-dark);
   font-weight: 700;
   padding: 12px 8px;
@@ -1459,7 +1458,7 @@ a.btn .material-symbols-rounded {
 /* Tighter spacing on narrow screens for better fit */
 @media (max-width: 520px) {
   .nav-mobile .burger {
-    background: #fff;
+    background: #f5f5f5;
     border: 1px solid rgba(1, 50, 55, .12);
     border-radius: 10px;
     width: 40px;
@@ -1472,7 +1471,7 @@ a.btn .material-symbols-rounded {
     position: absolute;
     right: 12px;
     top: calc(100% + 8px);
-    background: #fff;
+    background: #f5f5f5;
     border: 1px solid rgba(1, 50, 55, .12);
     border-radius: 12px;
     box-shadow: var(--card-shadow);
@@ -1576,7 +1575,7 @@ a.btn .material-symbols-rounded {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, .9);
+  background: rgba(245, 245, 245, .9);
   color: var(--color-dark);
   font-weight: 800;
   display: grid;
@@ -1644,10 +1643,7 @@ a.btn .material-symbols-rounded {
 
 .community-card {
   scroll-snap-align: start;
-}
-
-.community-card {
-  background: #fff;
+  background: #f5f5f5;
   border: 1px solid rgba(1, 50, 55, .12);
   border-radius: 14px;
   box-shadow: 0 6px 16px rgba(1, 50, 55, .08);
@@ -1682,7 +1678,7 @@ a.btn .material-symbols-rounded {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: #fff;
+  background: #f5f5f5;
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
   cursor: pointer;

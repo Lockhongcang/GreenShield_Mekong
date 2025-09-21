@@ -42,7 +42,7 @@ export default function CommunitySection() {
               ))}
             </div>
             <div className="community-static">
-              <span className="handle">@greenmin_team</span>
+              <span className="handle">@greenmind_team</span>
             </div>
           </div>
         </div>
