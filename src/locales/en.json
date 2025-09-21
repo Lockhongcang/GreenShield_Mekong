@@ -1,0 +1,168 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "advantages": "Advantages",
+    "mission": "Mission",
+    "community": "Community",
+    "contact": "Contact"
+  },
+  "ticker": {
+    "about": ["SOLUTIONS", "REGENERATIVE", "SUSTAINABLE"],
+    "advantages": ["Optimized cost", "Bio sustainability", "Proven results", "Transparent delivery"],
+    "community": ["CONNECT", "IMPACT", "SOCIAL"]
+  },
+  "home": {
+    "title": "GreenShield Mekong",
+    "subtitle": "Eco-packaging from water hyacinth — clean rivers, protect fruits",
+    "bannerAlt": "banner showing fruits and eco packaging"
+  },
+  "cta": {
+    "explore": "Explore",
+    "contact": "Contact",
+    "learnMore": "Learn more"
+  },
+  "products": {
+    "title": "Products & Technology",
+    "stepsTitle": "5-step process"
+  },
+  "about": {
+    "title": "About the project",
+    "body": "GreenShield Mekong turns water hyacinth and local by‑products into bio-based fruit packaging. Our goals are to cut plastic waste, clean rivers, and create sustainable livelihoods while meeting export logistics and traceability needs. Primary customers are farm cooperatives and exporters seeking greener, cost-effective packaging.",
+    "features": {
+      "environment": {
+        "title": "Environment",
+        "desc": "Bio materials that naturally degrade and reduce plastic waste."
+      },
+      "export": {
+        "title": "Export-ready",
+        "desc": "Durable design that meets logistics tests and traceability."
+      },
+      "jobs": {
+        "title": "Local jobs",
+        "desc": "Sourcing from farmers and creating stable community employment."
+      }
+    }
+  }
+  ,
+  "community": {
+    "title": "Media & Community",
+    "subtitle": "News, images and community stories",
+    "tagline": "Connection & social impact",
+    "pillars": {
+      "coop": {
+        "title": "Co-op collaboration",
+        "desc": "Partner with local cooperatives to collect and pre-process hyacinth — prioritizing rural women and vulnerable workers."
+      },
+      "training": {
+        "title": "Technical training",
+        "desc": "Provide production and quality management training to local partners."
+      },
+      "digital": {
+        "title": "Digital storytelling",
+        "desc": "QR → fanpage/website to tell the ‘Made in Mekong’ story to young consumers."
+      },
+      "esg": {
+        "title": "ESG partnerships",
+        "desc": "Work with environmental orgs/ESG funds to scale resources and support exports."
+      }
+    },
+    "readMore": "Read more",
+    "teamTitle": "Our Team & Partners",
+    "connect": "Connect with us",
+    "socialBlurb": "Follow us for updates",
+    "qrTitle": "Scan QR to view page",
+    "join": "Join the community",
+    "joinBtn": "Join",
+    "testimonialsTitle": "Community feedback"
+  },
+  "advantages": {
+    "title": "Why customers choose GreenShield Mekong",
+    "feature1": {
+      "title": "Expert-backed",
+      "desc": "Process advised by bio-material and agriculture specialists."
+    },
+    "feature2": {
+      "title": "Proven outcomes",
+      "desc": "Reduce post-harvest losses and maintain product quality."
+    },
+    "feature3": {
+      "title": "Award-winning",
+      "desc": "Recognized by innovation funds and startup community."
+    },
+    "feature4": {
+      "title": "Local partnership",
+      "desc": "Work with cooperatives, creating on-site jobs."
+    },
+    "feature5": {
+      "title": "Global-ready",
+      "desc": "Aligned with EU/Japan/US green supply requirements."
+    }
+  },
+  "mission": {
+    "title": "Mission & 3-year goals",
+    "desc": "Over the next 3 years, GreenShield Mekong will scale bio-based packaging from water hyacinth to cut plastic waste, clean waterways, and create fair livelihoods, while meeting export standards with transparent impact.",
+    "kpis": [
+      { "icon": "recycling", "title": "500 tons plastic avoided", "desc": "Replace single-use plastic with bio-based materials." },
+      { "icon": "water_drop", "title": "5,000 tons biomass valorized", "desc": "Collect hyacinth/biomass and help clean rivers." },
+      { "icon": "groups", "title": "+300 local jobs", "desc": "Partner 20+ co-ops, provide stable income for communities." },
+      { "icon": "factory", "title": "20M units/year", "desc": "Run 3 semi-industrial lines to scale sustainably." }
+    ],
+    "commitmentsTitle": "Sustainability commitments",
+    "commitments": [
+      "100% bio-based, food-contact safe materials.",
+      "Traceability and transparent environmental-social impact.",
+      "Designed for recycling/composting; low-emission production.",
+      "Fair partnerships with farmers/co-ops.",
+      "Compliant with EU/Japan/US green standards."
+    ]
+  }
+  ,
+  "impact": {
+    "title": "Driving impact with green packaging",
+    "a": {
+      "kicker": "Safety & standards",
+      "value": "100%",
+      "label": "bio-based materials",
+      "desc": "Food-contact safe, designed for composting/recycling."
+    },
+    "b": {
+      "kicker": "Environmental outcomes",
+      "value": "500 tons",
+      "label": "plastic avoided",
+      "desc": "3-year goal by replacing single-use packaging."
+    },
+    "c": {
+      "kicker": "Local partnership",
+      "value": "20+",
+      "label": "co-op partners",
+      "desc": "Work with communities and create sustainable jobs."
+    },
+    "d": {
+      "kicker": "Production capacity",
+      "value": "20M",
+      "label": "units per year",
+      "desc": "Year-3 scale with three semi-industrial lines."
+    }
+  }
+  ,
+  "footer": {
+    "tagline": "Green shield for Mekong fruits",
+    "services": {
+      "title": "What we provide",
+      "items": [
+        "Co-op collaboration",
+        "Technical training",
+        "Digital storytelling",
+        "ESG partnerships"
+      ]
+    },
+    "contact": {
+      "title": "Contact us",
+      "address": "Can Tho City, Vietnam",
+      "phone": "+84 97 000 0000",
+      "email": "greenshieldmekong@gmail.com"
+    }
+  }
+}
