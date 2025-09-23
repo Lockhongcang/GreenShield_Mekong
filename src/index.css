@@ -1339,6 +1339,23 @@ a.btn .material-symbols-rounded {
   transform: translateY(0) scale(1);
 }
 
+/* On small screens we disable IntersectionObserver animations, so keep content visible */
+@media (max-width: 1023px) {
+  .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Respect reduced-motion: keep content visible, no transitions */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* About ticker */
 .about-ticker {
   position: absolute;
