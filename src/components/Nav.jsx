@@ -17,11 +17,11 @@ export default function Nav() {
   const { t } = useTranslation()
   const [activeId, setActiveId] = useState('home')
   const [open, setOpen] = useState(false)
-  const [isNarrow, setIsNarrow] = useState(() => (typeof window !== 'undefined' ? window.innerWidth < 768 : false))
+  const [isNarrow, setIsNarrow] = useState(() => (typeof window !== 'undefined' ? window.innerWidth < 900 : false))
 
   useEffect(() => {
     if (typeof window === 'undefined') return
-    const onResize = () => setIsNarrow(window.innerWidth < 768)
+    const onResize = () => setIsNarrow(window.innerWidth < 900)
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [])
@@ -62,7 +62,12 @@ export default function Nav() {
           <ul className="nav-drawer__list">
             {links.map(l => (
               <li key={l.id}>
-                <a href={`#${l.id}`} className="nav-link" onClick={() => setOpen(false)}>
+                <a
+                  href={`#${l.id}`}
+                  className={activeId === l.id ? 'nav-link active' : 'nav-link'}
+                  aria-current={activeId === l.id ? 'page' : undefined}
+                  onClick={() => setOpen(false)}
+                >
                   {t(l.labelKey)}
                 </a>
               </li>

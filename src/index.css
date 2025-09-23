@@ -97,6 +97,7 @@ p,
 .app-scroll {
   height: 100vh;
   overflow-y: auto;
+  scrollbar-width: none;
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
 }
@@ -303,11 +304,57 @@ p,
   box-shadow: var(--card-shadow);
   z-index: 50;
   border: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  outline: none;
 }
 
 .back-to-top .material-symbols-rounded {
   color: #fff;
   font-variation-settings: 'FILL'1, 'wght'700, 'GRAD'0, 'opsz'24;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  animation: btt-pulse 2.4s ease-in-out infinite;
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(1, 50, 55, .22);
+}
+
+.back-to-top:focus-visible {
+  box-shadow: 0 0 0 3px rgba(76, 167, 113, .35), 0 10px 28px rgba(1, 50, 55, .22);
+}
+
+@keyframes btt-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 167, 113, 0.35), 0 8px 20px rgba(1, 50, 55, .18);
+  }
+
+  70% {
+    box-shadow: 0 0 0 12px rgba(76, 167, 113, 0), 0 10px 28px rgba(1, 50, 55, .22);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 167, 113, 0), 0 8px 20px rgba(1, 50, 55, .18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top.is-visible {
+    animation: none;
+  }
+
+  .back-to-top,
+  .back-to-top:hover {
+    transition: none;
+  }
 }
 
 .footer-brand .brand-row {
@@ -360,8 +407,15 @@ p,
   margin: 6px 0;
 }
 
-.contact-body { flex: 1; display: grid; place-items: center; }
-.footer-bottom { margin-top: 0; }
+.contact-body {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.footer-bottom {
+  margin-top: 0;
+}
 
 .footer-hr {
   margin: 2rem 0;
@@ -380,10 +434,7 @@ p,
     grid-template-columns: 1fr;
   }
 
-  .site-footer {
-    grid-template-columns: 1fr;
-  }
-
+  /* Keep footer multi-column at 980px as requested; only remove left border on narrow */
   .footer-contact {
     border-left: none;
     padding-left: 0;
@@ -481,6 +532,8 @@ p,
 /* Advantages (Bento) */
 .section--advantages {
   background: #f7faf7;
+  position: relative;
+  overflow: hidden;
 }
 
 .advantages-bento {
@@ -517,6 +570,30 @@ p,
   object-fit: contain;
 }
 
+/* On desktop, let the mascot "float" and overlay the adv-media tile */
+@media (min-width: 981px) {
+  .advantages-media .media-mascot {
+    overflow: visible;
+    /* allow the image to spill outside the tile */
+    min-height: 260px;
+    position: relative;
+    z-index: 4;
+  }
+
+  .advantages-media .media-mascot img {
+    position: absolute !important;
+    right: -6%;
+    bottom: -8%;
+    width: clamp(220px, 60%, 380px);
+    height: auto;
+    z-index: 6;
+    /* float above nearby tiles */
+    pointer-events: none;
+    filter: drop-shadow(0 12px 28px rgba(1, 50, 55, .18));
+    display: block;
+  }
+}
+
 .advantages-board {
   display: flex;
   flex-direction: column;
@@ -539,7 +616,7 @@ p,
 
 /* adv-card in advantages board */
 .adv-card {
-  background: #f5f5f5;
+  background: #fff;
   border-radius: 18px;
   padding: 14px 14px 16px 14px;
   border: var(--border);
@@ -787,10 +864,15 @@ p,
 
   .advantages-media {
     order: 2;
+    display: none;
+    /* Don't take layout space on mobile */
   }
 
   .advantages-board {
     order: 1;
+    position: relative;
+    z-index: 2;
+    /* sit above mascot overlay */
   }
 
   .board-row--two, .board-row--three {
@@ -799,6 +881,11 @@ p,
 
   .adv-mascot {
     max-width: 280px;
+  }
+
+  /* Hide mascot entirely on mobile */
+  .section--advantages::after {
+    content: none;
   }
 }
 
@@ -1017,13 +1104,14 @@ p,
 .header {
   position: fixed;
   top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   width: min(95%, var(--max-width));
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 40;
+  z-index: 100;
   gap: 1rem;
   background: #f5f5f5;
   padding: 0.75rem 1rem;
@@ -1057,8 +1145,8 @@ p,
   }
 }
 
-/* Hide header lang on truly small screens (<768); it lives in the drawer */
-@media (max-width: 767px) {
+/* Hide header lang on small screens (<900); it lives in the drawer */
+@media (max-width: 899px) {
   .header-lang {
     display: none;
   }
@@ -1176,6 +1264,13 @@ a.btn .material-symbols-rounded {
   height: 100%;
 }
 
+/* Hide the right banner image on small/mobile screens */
+@media (max-width: 899px) {
+  .banner-content img {
+    display: none;
+  }
+}
+
 .banner::after {
   content: "";
   position: absolute;
@@ -1214,11 +1309,11 @@ a.btn .material-symbols-rounded {
 /* responsive */
 @media (max-width: 800px) {
   .section {
-    padding: 3rem 0.75rem;
+    padding: 4rem 0.75rem;
   }
 
   .header {
-    padding: 0 0.5rem;
+    padding: 0.3rem 1rem;
   }
 }
 
@@ -1228,31 +1323,30 @@ a.btn .material-symbols-rounded {
 }
 
 .nav-mobile .burger {
-  background: #f5f5f5;
-  border: 1px solid rgba(1, 50, 55, .12);
-  border-radius: 10px;
+  background: transparent;
   width: 40px;
   height: 40px;
   display: grid;
   place-items: center;
+  border: none;
 }
 
 .nav-backdrop {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, .35);
-  z-index: 60;
+  z-index: 105;
 }
 
 .nav-drawer {
   position: fixed;
   top: 0;
   right: -100%;
-  width: min(80vw, 320px);
+  width: min(80vw, 250px);
   height: 100vh;
   background: #f5f5f5;
   box-shadow: -8px 0 24px rgba(1, 50, 55, .2);
-  z-index: 70;
+  z-index: 110;
   display: flex;
   flex-direction: column;
   padding: 12px;
@@ -1281,13 +1375,33 @@ a.btn .material-symbols-rounded {
 .nav-drawer__list .nav-link {
   display: block;
   padding: 12px 10px;
-  border-radius: 10px;
   color: var(--color-dark);
-  border: 1px solid rgba(1, 50, 55, .08);
 }
 
 .nav-drawer__list .nav-link:hover {
   background: var(--color-bg);
+}
+
+/* Active state for current section in drawer */
+.nav-drawer__list .nav-link.active {
+  color: var(--color-primary);
+  position: relative;
+}
+
+.nav-drawer__list .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 8px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.nav-drawer__list .nav-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 167, 113, .32);
 }
 
 .nav-drawer__lang {
@@ -1584,6 +1698,7 @@ a.btn .material-symbols-rounded {
 
 @media (max-width: 900px) {
   .stack-gallery.steps {
+    scrollbar-width: none;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
