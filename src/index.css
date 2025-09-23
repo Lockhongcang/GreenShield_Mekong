@@ -40,6 +40,23 @@
   transform: translateY(0);
 }
 
+/* On small screens, we disable section animations → keep sections fully visible */
+@media (max-width: 1023px) {
+  .section {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Respect reduced-motion: no dimming or movement */
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 .section#products {
   /* Top->bottom gradient: primary to dark */
   background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-dark) 100%);
