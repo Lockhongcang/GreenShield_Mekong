@@ -1221,13 +1221,6 @@ a.btn .material-symbols-rounded {
   pointer-events: none;
 }
 
-/* On mobile, remove the banner overlay to avoid any translucent wash-out */
-@media (max-width: 899px) {
-  .banner::after {
-    content: none;
-  }
-}
-
 .banner>* {
   position: relative;
   z-index: 2;
