@@ -69,9 +69,15 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(245, 245, 245, 0.9);
+  background: rgba(245, 245, 245, 0.85);
   pointer-events: none;
   z-index: 0;
+}
+
+@media (max-width: 899px) {
+  .section#community::before {
+    background: rgba(245, 245, 245, 0.7);
+  }
 }
 
 .section#community>* {
@@ -1196,6 +1202,13 @@ a.btn .material-symbols-rounded {
   opacity: 0.9;
   z-index: 1;
   pointer-events: none;
+}
+
+/* On mobile, remove the banner overlay to avoid any translucent wash-out */
+@media (max-width: 899px) {
+  .banner::after {
+    content: none;
+  }
 }
 
 .banner>* {
