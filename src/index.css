@@ -1421,7 +1421,7 @@ a.btn .material-symbols-rounded {
   width: max-content;
   gap: 0; /* seamless join between strips */
   will-change: transform;
-  animation: ticker-ltr 40s linear infinite;
+  animation: ticker-ltr 20s linear infinite;
 }
 
 .about-ticker__strip {
@@ -1720,7 +1720,7 @@ a.btn .material-symbols-rounded {
 .stacked-title {
   font-weight: 900;
   color: var(--color-primary);
-  font-size: clamp(2rem, 6vw, 4.4rem);
+  font-size: clamp(2.5rem, 8vw, 5.2rem);
   display: grid;
   gap: 0.5rem;
 }
@@ -1745,6 +1745,17 @@ a.btn .material-symbols-rounded {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Auto marquee variant */
+.community-scroller.auto-marquee {
+  scroll-snap-type: none; /* disable snap for smooth continuous motion */
+  gap: 2.5rem;
+  cursor: grab;
+}
+.community-scroller.auto-marquee:active { cursor: grabbing; }
+.community-scroller.auto-marquee .community-card { scroll-snap-align: unset; }
+
+.community-scroller.auto-marquee.paused { animation-play-state: paused; }
 
 .community-scroller::-webkit-scrollbar {
   display: none;
