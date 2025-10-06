@@ -1399,10 +1399,13 @@ a.btn .material-symbols-rounded {
   margin: 0; /* spacing handled by parent gap */
 }
 
-/* Community ticker variant: black background, green text, above white overlay */
+  animation: ticker-ltr 40s linear infinite; /* Updated duration */
 .community-ticker {
   background: #000 !important;
   color: var(--color-2) !important;
+.about-ticker__track.ticker-track--js {
+  animation: none !important;
+}
   z-index: 2;
   /* above section overlay */
 }
