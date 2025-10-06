@@ -1399,13 +1399,10 @@ a.btn .material-symbols-rounded {
   margin: 0; /* spacing handled by parent gap */
 }
 
-  animation: ticker-ltr 40s linear infinite; /* Updated duration */
+/* Community ticker variant: black background, green text, above white overlay */
 .community-ticker {
   background: #000 !important;
   color: var(--color-2) !important;
-.about-ticker__track.ticker-track--js {
-  animation: none !important;
-}
   z-index: 2;
   /* above section overlay */
 }
@@ -1723,7 +1720,7 @@ a.btn .material-symbols-rounded {
 .stacked-title {
   font-weight: 900;
   color: var(--color-primary);
-  font-size: clamp(2.5rem, 8vw, 5.2rem);
+  font-size: clamp(2rem, 6vw, 4.4rem);
   display: grid;
   gap: 0.5rem;
 }
@@ -1736,32 +1733,29 @@ a.btn .material-symbols-rounded {
 }
 
 .community-scroller {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 50%;
-  /* exactly 2 cards visible */
+  position: relative;
+  overflow: hidden;
+  padding: 1.25rem 0;
+}
+
+.community-scroller.marquee .marquee-track {
+  display: flex;
   gap: 2rem;
-  overflow-x: auto;
-  padding: 1.25rem 1.5rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  width: max-content;
+  animation: community-marquee 28s linear infinite;
+  padding: 0 1.5rem;
 }
 
-/* Auto marquee variant */
-.community-scroller.auto-marquee {
-  scroll-snap-type: none; /* disable snap for smooth continuous motion */
-  gap: 2.5rem;
-  cursor: grab;
+@keyframes community-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
-.community-scroller.auto-marquee:active { cursor: grabbing; }
-.community-scroller.auto-marquee .community-card { scroll-snap-align: unset; }
 
-.community-scroller.auto-marquee.paused { animation-play-state: paused; }
-
-.community-scroller::-webkit-scrollbar {
-  display: none;
+@media (max-width: 980px) {
+  .community-scroller.marquee .marquee-track { gap: 1.5rem; animation-duration: 32s; }
+}
+@media (max-width: 640px) {
+  .community-scroller.marquee .marquee-track { gap: 1.25rem; animation-duration: 36s; }
 }
 
 .community-card {
@@ -1773,6 +1767,7 @@ a.btn .material-symbols-rounded {
   padding: 18px;
   display: flex;
   flex-direction: column;
+  width: 300px;
   gap: 10px;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
