@@ -23,7 +23,6 @@ export default function CommunitySection() {
               <span>{t('community.title', { defaultValue: 'Cộng đồng' }).toUpperCase()}</span>
             </div>
           </div>
-
           {/* Right: split into scroller (top) + static black tile (bottom) */}
           <div className="community-right">
             <div className="community-scroller">

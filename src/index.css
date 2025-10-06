@@ -1396,7 +1396,7 @@ a.btn .material-symbols-rounded {
 /* default asterisk spacing between ticker items */
 .about-ticker .aster {
   opacity: .85;
-  margin: 0 10px;
+  margin: 0; /* spacing handled by parent gap */
 }
 
 /* Community ticker variant: black background, green text, above white overlay */
@@ -1408,27 +1408,25 @@ a.btn .material-symbols-rounded {
 }
 
 .community-ticker .about-ticker__strip {
-  gap: 2rem;
+  gap: 2.2rem; /* slightly wider for contrast */
 }
 
 .community-ticker .aster {
   opacity: .85;
-  margin: 0 .75rem;
+  margin: 0; /* parent gap governs spacing */
 }
 
 .about-ticker__track {
   display: flex;
   width: max-content;
-  gap: 3rem;
-  /* No change here, but keeping for context */
+  gap: 0; /* seamless join between strips */
   will-change: transform;
   animation: ticker-ltr 40s linear infinite;
 }
 
 .about-ticker__strip {
   display: inline-flex;
-  gap: 3rem;
-  /* No change here, but keeping for context */
+  gap: 1.75rem; /* unified spacing */
   padding: 0 1.5rem;
   white-space: nowrap;
 }
@@ -1539,26 +1537,8 @@ a.btn .material-symbols-rounded {
     display: grid;
     place-items: center;
   }
-
-  .about-ticker__track {
-    gap: 1.25rem;
-  }
-
-  .about-ticker__strip {
-    gap: 1.25rem;
-  }
-
-  .about-ticker__strip .aster, .about-ticker .aster {
-    margin: 0 5px;
-  }
-
-  .community-ticker .about-ticker__strip {
-    gap: 1.25rem;
-  }
-
-  .community-ticker .aster {
-    margin: 0 .5rem;
-  }
+  .about-ticker__strip { gap: 1.25rem; }
+  .community-ticker .about-ticker__strip { gap: 1.4rem; }
 }
 
 .stack-gallery:not(:hover) .stack-card.is-default .stack-card__overlay,

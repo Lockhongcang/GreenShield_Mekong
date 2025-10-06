@@ -8,25 +8,26 @@ import React from 'react'
  * - separator: string to render between items (e.g., '✳')
  */
 export default function Ticker({ items = [], className = '', separator = '' }) {
-  const sequence = []
-  items.forEach((txt, idx) => {
-    sequence.push(<span key={`i-${idx}`}>{txt}</span>)
-    if (separator && idx < items.length - 1) {
-      sequence.push(<span className="aster" key={`s-${idx}`}>{separator}</span>)
-    }
-  })
-  // duplicate the sequence to make each strip long enough
-  const stripContent = (
-    <div className="about-ticker__strip">
-      {sequence}
-      {sequence}
-    </div>
-  )
+  if (!items.length) return null
+
+  // Build canonical pattern: item sep item sep ... item sep (final sep so loop visually seamless)
+  const buildStripChildren = (repeatKey = 'a') => {
+    const nodes = []
+    items.forEach((txt, idx) => {
+      nodes.push(<span key={`${repeatKey}-i-${idx}`}>{txt}</span>)
+      nodes.push(<span className="aster" key={`${repeatKey}-s-${idx}`}>{separator || '✳'}</span>)
+    })
+    return nodes
+  }
+
+  const stripA = <div className="about-ticker__strip" key="strip-a">{buildStripChildren('a')}</div>
+  const stripB = <div className="about-ticker__strip" key="strip-b" aria-hidden>{buildStripChildren('b')}</div>
+
   return (
     <div className={`about-ticker ${className}`} aria-hidden>
       <div className="about-ticker__track">
-        {stripContent}
-        {React.cloneElement(stripContent, { 'aria-hidden': true })}
+        {stripA}
+        {stripB}
       </div>
     </div>
   )
