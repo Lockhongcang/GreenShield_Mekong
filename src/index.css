@@ -32,6 +32,46 @@
   transition: transform var(--transition-fast), opacity var(--transition-fast);
   opacity: 0.6;
   transform: translateY(10px);
+
+/* Tooltip styling for social buttons */
+.social-btn .tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 6px);
+  transform: translateX(-50%) translateY(4px);
+  background: #111;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 11px;
+  line-height: 1;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+}
+
+.social-btn .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #111;
+}
+
+.social-btn:hover .tooltip,
+.social-btn:focus-visible .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (hover: none) {
+  .social-btn .tooltip { display: none; }
+}
 }
 
 /* active state (set by IntersectionObserver) */
@@ -1744,18 +1784,6 @@ a.btn .material-symbols-rounded {
   width: max-content;
   animation: community-marquee 28s linear infinite;
   padding: 0 1.5rem;
-}
-
-.community-scroller.marquee:hover .marquee-track,
-.community-scroller.marquee:focus-within .marquee-track {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .community-scroller.marquee .marquee-track {
-    animation: none;
-    transform: none;
-  }
 }
 
 @keyframes community-marquee {

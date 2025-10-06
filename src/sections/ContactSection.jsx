@@ -69,7 +69,7 @@ export default function ContactSection() {
                 <span>{t('footer.contact.title', { defaultValue: 'Liên hệ với chúng tôi' })}</span>
               </div>
               <address className="contact-lines">{t('footer.contact.address', { defaultValue: 'TP. Cần Thơ, Việt Nam' })}</address>
-              <div className="contact-lines"><a href="tel:+84968020458">{t('footer.contact.phone', { defaultValue: '096 802 04 58' })}</a></div>
+              <div className="contact-lines"><a href="tel:+84970000000">{t('footer.contact.phone', { defaultValue: '+84 97 000 0000' })}</a></div>
               <div className="contact-lines"><a href="mailto:greenshieldmekong@gmail.com">{t('footer.contact.email', { defaultValue: 'greenshieldmekong@gmail.com' })}</a></div>
             </div>
           </footer>
