@@ -14,8 +14,8 @@
     "community": ["CONNECT", "IMPACT", "SOCIAL"]
   },
   "home": {
-    "title": "GreenShield Mekong",
-    "subtitle": "Eco-packaging from water hyacinth — clean rivers, protect fruits",
+    "title": "A green shield for the fruits of the riverlands",
+    "subtitle": "GreenLife - GreenMind - GreenSight",
     "bannerAlt": "banner showing fruits and eco packaging"
   },
   "cta": {
@@ -163,6 +163,20 @@
       "address": "Can Tho City, Vietnam",
       "phone": "+84 97 000 0000",
       "email": "greenshieldmekong@gmail.com"
+    },
+    "partnerLabel": "In partnership with",
+    "partnerAlt": "partner logo"
+  }
+  ,
+  "contact": {
+    "newsletter": {
+      "title": "Subscribe to our newsletter",
+      "desc": "Sign up to receive the latest updates, expert insights on bio-based materials, project milestones and community impact.",
+      "label": "Stay updated",
+      "placeholder": "Enter your email",
+      "cta": "Subscribe",
+      "note": "By subscribing, you agree to the ",
+      "privacy": "Privacy Policy"
     }
   }
 }

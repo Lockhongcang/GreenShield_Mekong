@@ -15,7 +15,7 @@
   },
   "home": {
     "title": "Lá chắn xanh cho trái cây miền sông nước",
-    "subtitle": "Bao bì sinh học từ lục bình — sạch sông, bảo vệ hoa quả",
+    "subtitle": "Cuộc sống xanh - Tầm nhìn xanh - Tâm Trí Xanh",
     "bannerAlt": "banner showing fruits and eco packaging"
   },
   "cta": {
@@ -173,6 +173,20 @@
       "address": "TP Cần Thơ, Việt Nam",
       "phone": "+84 97 000 0000",
       "email": "greenshieldmekong@gmail.com"
+    },
+    "partnerLabel": "Hợp tác cùng",
+    "partnerAlt": "logo đối tác"
+  }
+  ,
+  "contact": {
+    "newsletter": {
+      "title": "Đăng ký nhận bản tin",
+      "desc": "Đăng ký để nhận thông tin mới nhất, góc nhìn chuyên gia về vật liệu sinh học, cập nhật dự án và tác động cộng đồng.",
+      "label": "Luôn cập nhật",
+      "placeholder": "Nhập email của bạn",
+      "cta": "Đăng ký",
+      "note": "Bằng việc đăng ký, bạn đồng ý với ",
+      "privacy": "Chính sách bảo mật"
     }
   }
 }
