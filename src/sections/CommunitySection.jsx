@@ -2,7 +2,7 @@
 import React from 'react'
 import { Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
-import Ticker from '../components/Ticker'
+import Marquee from '../components/Marquee'
 
 export default function CommunitySection() {
   const { t } = useTranslation()
@@ -48,8 +48,13 @@ export default function CommunitySection() {
           </div>
         </div>
       </div>
-      {/* Scrolling ticker for Community (bottom anchored like About/Advantages) */}
-      <Ticker items={t('ticker.community', { returnObjects: true })} separator="✳" className="community-ticker" />
+      {/* Full-width marquee dark variant */}
+      <Marquee
+        className="section-marquee section-marquee--community"
+        items={t('ticker.community', { returnObjects: true })}
+        separator="✳"
+        speed={30}
+      />
     </section>
   )
 }

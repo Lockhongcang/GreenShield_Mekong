@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Typography, Space } from 'antd'
 import { useTranslation } from 'react-i18next'
-import Ticker from '../components/Ticker'
+import Marquee from '../components/Marquee'
 
 // Material Symbols icon as a span. Font is loaded in index.html
 const MSRIcon = ({ name, color = 'var(--color-bg)', size = 32 }) => (
@@ -65,8 +65,13 @@ export default function AboutSection(){
           </Col>
         </Row>
       </div>
-      {/* scrolling tagline bar (seamless, infinite) */}
-      <Ticker items={t('ticker.about', { returnObjects: true })} separator="✳" />
+      {/* Full-width marquee bar */}
+      <Marquee
+        className="section-marquee section-marquee--about"
+        items={t('ticker.about', { returnObjects: true })}
+        separator="✳"
+        speed={28}
+      />
     </section>
   )
 }

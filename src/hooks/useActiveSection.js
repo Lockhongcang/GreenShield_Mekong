@@ -25,7 +25,7 @@ export default function useActiveSection(selector = '.section', options = {}) {
       root: null,
       rootMargin: '0px',
       threshold: 0.45,
-      ...options
+      ...options  
     })
 
     elems.forEach(e => observer.observe(e))

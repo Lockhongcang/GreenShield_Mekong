@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
 import mascot from '../assets/mascot-gsm.PNG'
-import Ticker from '../components/Ticker'
+import Marquee from '../components/Marquee'
 
 // Advantages: 2-column layout — left mascot, right bento board (2 items on first row, 3 on second)
 export default function AdvantagesSection() {
@@ -90,8 +90,13 @@ export default function AdvantagesSection() {
           </div>
         </div>
 
-        {/* Scrolling ticker reused from About */}
-        <Ticker items={t('ticker.advantages', { returnObjects: true })} separator="✳" className="advantages-ticker" />
+        {/* Full-width marquee */}
+        <Marquee
+          className="section-marquee section-marquee--advantages"
+          items={t('ticker.advantages', { returnObjects: true })}
+          separator="✳"
+          speed={28}
+        />
       </div>
     </section>
   )

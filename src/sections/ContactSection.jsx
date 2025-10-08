@@ -74,7 +74,18 @@ export default function ContactSection() {
             </div>
           </footer>
           <div className="footer-hr" />
-          <div className="footer-copy">© {new Date().getFullYear()} GreenShield Mekong</div>
+          <div className="footer-sitemap">
+            <div className="footer-copy">© {new Date().getFullYear()} GreenShield Mekong</div>
+            <div className="footer-partner">
+              <span className="partner-label">{t('footer.partnerLabel', { defaultValue: 'Đối tác của' })}</span>
+              <img
+                src="http://res.cloudinary.com/farmcode/image/upload/v1733679777/ecoka/lmogymmqzseizprojyl0.png"
+                alt={t('footer.partnerAlt', { defaultValue: 'Ecoka logo' })}
+                className="partner-logo"
+                loading="lazy"
+              />
+            </div>
+          </div>
           <div className="footer-hr" />
         </div>
       </div>
