@@ -1419,72 +1419,44 @@ a.btn .material-symbols-rounded {
   }
 }
 
-/* About ticker */
-.about-ticker {
+/* Marquee (Magic UI style) */
+.section-marquee {
   position: absolute;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   bottom: 0;
-  background: var(--color-primary);
-  color: #fff;
+  width: 100%;
   overflow: hidden;
-  height: 44px;
-  display: flex;
-  align-items: center;
+  padding: 0; /* outer wrapper no padding */
+  line-height: 1;
+  letter-spacing: .06em;
 }
 
-/* default asterisk spacing between ticker items */
-.about-ticker .aster {
-  opacity: .85;
-  margin: 0; /* spacing handled by parent gap */
-}
-
-/* Community ticker variant: black background, green text, above white overlay */
-.community-ticker {
-  background: #000 !important;
-  color: var(--color-2) !important;
-  z-index: 2;
-  /* above section overlay */
-}
-
-.community-ticker .about-ticker__strip {
-  gap: 2.2rem; /* slightly wider for contrast */
-}
-
-.community-ticker .aster {
-  opacity: .85;
-  margin: 0; /* parent gap governs spacing */
-}
-
-.about-ticker__track {
+.mq-root { width: 100%; }
+.mq-mask { width: 100%; overflow: hidden; }
+/* Track now contains 5 duplicate strips for smoother continuity */
+.mq-track {
   display: flex;
   width: max-content;
-  gap: 0; /* seamless join between strips */
+  animation: mq-scroll linear infinite;
   will-change: transform;
-  animation: ticker-ltr 20s linear infinite;
+}
+.mq-strip { display: flex; gap: 2.4rem; padding:0.75rem 2rem; }
+.mq-item { font-weight: inherit; white-space: nowrap; display: inline-flex; align-items: center; }
+.mq-item .mq-sep { opacity: .55; font-weight: inherit; padding: 0 1.2rem 0 1.4rem; display: inline-block; }
+
+/* With 5 identical strips we shift width of two strips (=40%) for seamless loop start point */
+@keyframes mq-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40%); }
 }
 
-.about-ticker__strip {
-  display: inline-flex;
-  gap: 1.75rem; /* unified spacing */
-  padding: 0 1.5rem;
-  white-space: nowrap;
-}
+/* Variants */
+.section-marquee--about, .section-marquee--advantages { background: var(--color-primary); color: #fff; }
+.section-marquee--community { background: #000; color: #fafafa; z-index: 2; }
 
-.about-ticker__strip span {
-  font-weight: 800;
-  letter-spacing: 0.06em;
-}
-
-/* Animate the combined track from -50% to 0 for seamless left-to-right looping */
-@keyframes ticker-ltr {
-  from {
-    transform: translateX(-50%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
+/* Adjust spacing on smaller screens */
+@media (max-width: 640px) {
+  .mq-strip { gap: 1.6rem; padding: 0 1.2rem; }
 }
 
 /* Stack gallery (Products) */
@@ -1784,6 +1756,12 @@ a.btn .material-symbols-rounded {
   width: max-content;
   animation: community-marquee 28s linear infinite;
   padding: 0 1.5rem;
+}
+
+/* Hover pause effect (Magic UI style) */
+.community-scroller.marquee:hover .marquee-track,
+.community-scroller.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
 }
 
 @keyframes community-marquee {
