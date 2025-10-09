@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import LanguageToggle from './LanguageToggle'
 import { useTranslation } from 'react-i18next'
+import useActiveSection from '../hooks/useActiveSection'
 
 const links = [
   { id: 'home', labelKey: 'nav.home' },
@@ -15,6 +16,7 @@ const links = [
 
 export default function Nav() {
   const { t } = useTranslation()
+  const observedActiveId = useActiveSection('.section', { threshold: 0.55 })
   const [activeId, setActiveId] = useState('home')
   const [open, setOpen] = useState(false)
   const [isNarrow, setIsNarrow] = useState(() => (typeof window !== 'undefined' ? window.innerWidth < 900 : false))
@@ -26,25 +28,15 @@ export default function Nav() {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id)
-          }
-        })
-      },
-      { threshold: 0.6 } // 60% section trong viewport thì tính là active
-    )
-
-    links.forEach((link) => {
-      const el = document.getElementById(link.id)
-      if (el) observer.observe(el)
-    })
-
-    return () => observer.disconnect()
-  }, [])
+  // Smooth scroll helper with header offset, scrolling the main .app-scroll container
+  const smoothScrollTo = (targetId) => {
+    const el = document.getElementById(targetId)
+    if (!el) return
+    el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+    setActiveId(targetId)
+    // Optional: reflect in URL without jumping
+    if (history?.replaceState) history.replaceState(null, '', `#${targetId}`)
+  }
 
   if (isNarrow) {
     return (
@@ -64,9 +56,9 @@ export default function Nav() {
               <li key={l.id}>
                 <a
                   href={`#${l.id}`}
-                  className={activeId === l.id ? 'nav-link active' : 'nav-link'}
-                  aria-current={activeId === l.id ? 'page' : undefined}
-                  onClick={() => setOpen(false)}
+                  className={(observedActiveId || activeId) === l.id ? 'nav-link active' : 'nav-link'}
+                  aria-current={(observedActiveId || activeId) === l.id ? 'page' : undefined}
+                  onClick={(e) => { e.preventDefault(); smoothScrollTo(l.id); setOpen(false) }}
                 >
                   {t(l.labelKey)}
                 </a>
@@ -86,7 +78,12 @@ export default function Nav() {
       <ul style={{ display: 'flex', gap: '1.5rem', listStyle: 'none', margin: 0, padding: 0 }}>
         {links.map(l => (
           <li key={l.id}>
-            <a href={`#${l.id}`} className={activeId === l.id ? 'nav-link active' : 'nav-link'} style={{ textDecoration: 'none', color: 'var(--color-dark)' }}>
+            <a
+              href={`#${l.id}`}
+              className={(observedActiveId || activeId) === l.id ? 'nav-link active' : 'nav-link'}
+              style={{ textDecoration: 'none', color: 'var(--color-dark)' }}
+              onClick={(e) => { e.preventDefault(); smoothScrollTo(l.id) }}
+            >
               {t(l.labelKey)}
             </a>
           </li>
