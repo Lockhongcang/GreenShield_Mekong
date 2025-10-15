@@ -2,6 +2,7 @@ import React from 'react'
 import { Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
 import mascot from '../assets/mascot-gsm-01.png'
+import NumberTicker from '../components/NumberTicker'
 
 export default function MissionSection(){
   const { t } = useTranslation()
@@ -24,11 +25,28 @@ export default function MissionSection(){
             const value = t(`impact.${td.key}.value`)
             const label = t(`impact.${td.key}.label`)
             const desc = t(`impact.${td.key}.desc`)
+            // Split value into numeric and unit parts (e.g., "500 tấn" -> 500 and " tấn", "20M" -> 20 and "M")
+            const match = String(value).match(/^(\d+[\d,.]*)(.*)$/)
+            const numPart = match ? match[1].replace(/[,\s]/g, '') : ''
+            const unitPart = match ? match[2] : ''
+            const isNumber = numPart !== '' && !isNaN(Number(numPart))
             return (
               <div key={idx} className={base} style={td.bg ? { backgroundImage: td.bg } : undefined}>
                 <div className="impact-inner">
                   <div className="impact-kicker">{kicker}</div>
-                  <div className="impact-value">{value}{td.key==='b' && <span className="impact-suffix">+</span>}</div>
+                  <div className="impact-value">
+                    {isNumber ? (
+                      <>
+                        <NumberTicker value={Number(numPart)} duration={1200} />
+                        <span className="impact-suffix">{unitPart || ''}{td.key==='b' ? '+' : ''}</span>
+                      </>
+                    ) : (
+                      <>
+                        {value}
+                        {td.key==='b' && <span className="impact-suffix">+</span>}
+                      </>
+                    )}
+                  </div>
                   <div className="impact-label">{label}</div>
                   <div className="impact-desc">{desc}</div>
                   {td.variant==='lime' && (

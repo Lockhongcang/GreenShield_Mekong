@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import useActiveSection from './hooks/useActiveSection'
-import Nav from './components/Nav'
+import React from 'react'
+  import Nav from './components/Nav'
 import LanguageToggle from './components/LanguageToggle'
 import HomeSection from './sections/HomeSection'
 import AboutSection from './sections/AboutSection'
@@ -14,14 +13,6 @@ import logolg from './assets/logo-lg.png';
 import BackToTop from './components/BackToTop'
 
 function App() {
-  // activates .active on .section elements (skip on narrow screens)
-  const [enableAnim, setEnableAnim] = useState(true)
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setEnableAnim(window.innerWidth >= 1024)
-    }
-  }, [])
-  useActiveSection('.section', { threshold: 0.45, disabled: !enableAnim })
 
   return (
     <>

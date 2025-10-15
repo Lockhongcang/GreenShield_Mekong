@@ -111,12 +111,6 @@
   color: #fff;
 }
 
-.section#about,
-.section#advantages,
-.section#mission {
-  background: #f5f5f5;
-}
-
 .section#community {
   position: relative;
   /* Ensure positioning context for the overlay */
@@ -555,13 +549,7 @@
   overflow: hidden;
 }
 
-.advantages-bento {
-  width: min(1100px, 95vw);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
+
 
 .advantages-header h1, .advantages-header h2 {
   text-align: center;
@@ -569,12 +557,7 @@
 }
 
 /* advantages grid: left mascot + right board */
-.advantages-grid {
-  display: grid;
-  grid-template-columns: 0.5fr 1.9fr;
-  gap: 20px;
-  align-items: stretch;
-}
+
 
 .advantages-media .media-mascot {
   overflow: hidden;
@@ -633,59 +616,19 @@
 }
 
 /* adv-card in advantages board */
-.adv-card {
-  background: #fff;
-  border-radius: 18px;
-  padding: 14px 14px 16px 14px;
-  border: var(--border);
-  box-shadow: var(--card-shadow);
-  overflow: hidden;
-  transform-origin: 50% 50%;
-  animation: none;
-  transition: transform 220ms ease, box-shadow 220ms ease;
-}
 
-.adv-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
 
-.adv-title {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--color-dark);
-}
 
-.adv-icon {
-  color: var(--color-primary);
-  font-variation-settings: 'FILL'1, 'wght'600, 'GRAD'0, 'opsz'24;
-}
 
-.adv-body {
-  display: grid;
-  grid-template-columns: 8px 1fr;
-  gap: 10px;
-  align-items: start;
-  margin-top: 8px;
-}
 
-.adv-body .vr {
-  width: 2px;
-  background: linear-gradient(180deg, var(--color-primary), rgba(76, 167, 113, .0));
-  border-radius: 2px;
-  justify-self: center;
-  height: 100%;
-}
 
-.adv-desc {
-  margin: 0;
-  color: var(--color-muted);
-  font-size: .95rem;
-  line-height: 1.45;
-}
+
+
+
+
+
+
+
 
 /* staggered puzzle-like entrance */
 .board-row--two .adv-card:nth-child(1) {
@@ -738,142 +681,31 @@
 }
 
 /* small star aster between ticker items */
-.advantages-ticker .aster {
-  opacity: .8;
-  margin: 0 8px;
-}
+
 
 /* Advantages Carousel styles */
-.adv-carousel {
-  width: min(1100px, 95vw);
-  margin: 0 auto 1rem auto;
-}
 
-.adv-left {
-  display: grid;
-  place-items: center;
-}
 
-.adv-mascot {
+/* Advantages video: section height fits the video (no forced full-screen) */
+.section--advantages {
+  padding: 0;
+  min-height: auto;
+  display: block;
+}
+.section--advantages .advantages-video {
+  position: relative;
   width: 100%;
-  max-width: 360px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 8px 18px rgba(1, 50, 55, .15));
 }
+.section--advantages .advantages-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
 
 /* scope carousel card to avoid clashing with advantages board cards */
-.adv-carousel .adv-card {
-  position: relative;
-  background: #f5f5f5;
-  border-radius: 16px;
-  border: 6px solid var(--color-primary);
-  padding: 28px 28px 56px 28px;
-  box-shadow: var(--card-shadow);
-  overflow: hidden;
-  min-height: 260px;
-}
 
-.adv-carousel .adv-card__overlay {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 80%;
-  max-height: 360px;
-  opacity: 0.12;
-  pointer-events: none;
-}
-
-.adv-carousel .adv-text {
-  position: relative;
-}
-
-.adv-carousel .adv-text .card-title {
-  margin: 0 0 0.25rem 0;
-  color: var(--color-dark);
-}
-
-.adv-carousel .adv-text .card-line {
-  margin: 0.2rem 0;
-  color: var(--color-muted);
-}
-
-/* enter/leave animations: only text moves */
-.adv-carousel .adv-text.enter {
-  animation: adv-enter 420ms ease both;
-}
-
-.adv-carousel .adv-text.leave {
-  animation: adv-leave 420ms ease both;
-  position: absolute;
-  inset: 0;
-}
-
-@keyframes adv-enter {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes adv-leave {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-}
-
-.adv-carousel .adv-controls {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px 16px;
-}
-
-.adv-carousel .adv-controls .arrow {
-  background: #f5f5f5;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-}
-
-.adv-carousel .adv-controls .dots {
-  display: flex;
-  gap: 8px;
-}
-
-.adv-carousel .adv-controls .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid var(--color-primary);
-  background: transparent;
-  cursor: pointer;
-}
-
-.adv-carousel .adv-controls .dot.active {
-  background: var(--color-primary);
-}
 
 @media (max-width: 980px) {
   .advantages-grid {
@@ -1265,7 +1097,6 @@ a.btn .material-symbols-rounded {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 0 8rem;
-  background: var(--color-primary);
   border-radius: var(--border-radius-lg);
   position: relative;
   background: url('https://images.unsplash.com/photo-1642342833223-931805dee5f5?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center/cover;
@@ -1969,3 +1800,5 @@ a.btn .material-symbols-rounded {
 .nav-drawer .lang-toggle-btn .lang-caret {
   display: inline-block !important;
 }
+
+/* (moved above) Advantages video sizing handled to fit content height */
