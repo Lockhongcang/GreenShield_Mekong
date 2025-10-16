@@ -10,7 +10,6 @@
   },
   "ticker": {
     "about": ["SOLUTIONS", "REGENERATIVE", "SUSTAINABLE"],
-    "advantages": ["Optimized cost", "Bio sustainability", "Proven results", "Transparent delivery"],
     "community": ["CONNECT", "IMPACT", "SOCIAL"]
   },
   "home": {
@@ -25,7 +24,14 @@
   },
   "products": {
     "title": "Products & Technology",
-    "stepsTitle": "5-step process"
+    "stepsTitle": "5-step process",
+    "steps": [
+      { "label": "Collection", "desc": "Water hyacinth, bagasse and recycled paper are collected locally." },
+      { "label": "Drying", "desc": "Materials are sun-dried to remove moisture." },
+      { "label": "Processing", "desc": "Materials are processed to meet standards before forming." },
+      { "label": "Molding", "desc": "Mixture is pressed into molds to form trays, boxes and liners." },
+      { "label": "Packing & distribution", "desc": "Finished products are inspected, packed and delivered." }
+    ]
   },
   "about": {
     "title": "About the project",
@@ -47,9 +53,7 @@
   }
   ,
   "community": {
-    "title": "Media & Community",
-    "subtitle": "News, images and community stories",
-    "tagline": "Connection & social impact",
+    "title": "Connection & social impact",
     "pillars": {
       "coop": {
         "title": "Co-op collaboration",
@@ -77,48 +81,6 @@
     "joinBtn": "Join",
     "testimonialsTitle": "Community feedback"
   },
-  "advantages": {
-    "title": "Why customers choose GreenShield Mekong",
-    "feature1": {
-      "title": "Expert-backed",
-      "desc": "Process advised by bio-material and agriculture specialists."
-    },
-    "feature2": {
-      "title": "Proven outcomes",
-      "desc": "Reduce post-harvest losses and maintain product quality."
-    },
-    "feature3": {
-      "title": "Award-winning",
-      "desc": "Recognized by innovation funds and startup community."
-    },
-    "feature4": {
-      "title": "Local partnership",
-      "desc": "Work with cooperatives, creating on-site jobs."
-    },
-    "feature5": {
-      "title": "Global-ready",
-      "desc": "Aligned with EU/Japan/US green supply requirements."
-    }
-  },
-  "mission": {
-    "title": "Mission & 3-year goals",
-    "desc": "Over the next 3 years, GreenShield Mekong will scale bio-based packaging from water hyacinth to cut plastic waste, clean waterways, and create fair livelihoods, while meeting export standards with transparent impact.",
-    "kpis": [
-      { "icon": "recycling", "title": "500 tons plastic avoided", "desc": "Replace single-use plastic with bio-based materials." },
-      { "icon": "water_drop", "title": "5,000 tons biomass valorized", "desc": "Collect hyacinth/biomass and help clean rivers." },
-      { "icon": "groups", "title": "+300 local jobs", "desc": "Partner 20+ co-ops, provide stable income for communities." },
-      { "icon": "factory", "title": "20M units/year", "desc": "Run 3 semi-industrial lines to scale sustainably." }
-    ],
-    "commitmentsTitle": "Sustainability commitments",
-    "commitments": [
-      "100% bio-based, food-contact safe materials.",
-      "Traceability and transparent environmental-social impact.",
-      "Designed for recycling/composting; low-emission production.",
-      "Fair partnerships with farmers/co-ops.",
-      "Compliant with EU/Japan/US green standards."
-    ]
-  }
-  ,
   "impact": {
     "title": "Driving impact with green packaging",
     "a": {

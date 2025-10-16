@@ -10,7 +10,6 @@
   },
   "ticker": {
     "about": ["GIẢI PHÁP", "TÁI TẠO", "BỀN VỮNG"],
-    "advantages": ["Chi phí tối ưu", "Bền vững sinh học", "Kết quả chứng minh", "Minh bạch triển khai"],
     "community": ["KẾT NỐI", "TÁC ĐỘNG", "XÃ HỘI"]
   },
   "home": {
@@ -25,7 +24,14 @@
   },
   "products": {
     "title": "Sản phẩm & Công nghệ",
-    "stepsTitle": "Quy trình 5 bước"
+    "stepsTitle": "Quy trình gồm 5 bước",
+    "steps": [
+      { "label": "Thu gom", "desc": "Lục bình, bã mía và giấy tái chế được thu thập từ địa phương." },
+      { "label": "Phơi khô", "desc": "Nguyên liệu được phơi khô để loại bỏ độ ẩm." },
+      { "label": "Xử lí", "desc": "Nguyên liệu được xử lí đạt tiêu chuẩn trước khi tạo hình." },
+      { "label": "Ép khuôn", "desc": "Hỗn hợp được đưa vào khuôn để tạo hình (khay, hộp, tấm lót)." },
+      { "label": "Đóng gói & phân phối", "desc": "Sản phẩm hoàn thiện được kiểm tra, đóng gói và giao đến khách hàng." }
+    ]
   },
   "about": {
     "title": "Tổng quan dự án",
@@ -44,62 +50,6 @@
         "desc": "Liên kết nông hộ, tạo việc làm ổn định cho cộng đồng."
       }
     }
-  },
-  "advantages": {
-    "title": "Vì sao khách hàng tin chọn GreenShield Mekong",
-    "feature1": {
-      "title": "Chứng nhận chuyên gia",
-      "desc": "Quy trình được cố vấn bởi chuyên gia vật liệu sinh học & nông nghiệp."
-    },
-    "feature2": {
-      "title": "Hiệu quả đã kiểm chứng",
-      "desc": "Giảm hao hụt sau thu hoạch, duy trì chất lượng nông sản tốt hơn."
-    },
-    "feature3": {
-      "title": "Giải pháp đoạt giải",
-      "desc": "Được các quỹ đổi mới và cộng đồng khởi nghiệp ghi nhận."
-    },
-    "feature4": {
-      "title": "Đồng hành địa phương",
-      "desc": "Hợp tác xã nông dân tham gia, tạo việc làm tại chỗ."
-    },
-    "feature5": {
-      "title": "Hướng tới tiêu chuẩn quốc tế",
-      "desc": "Tương thích yêu cầu xanh của EU/Nhật/Mỹ trong chuỗi cung ứng."
-    }
-  },
-  "mission": {
-    "title": "Sứ mệnh của chúng tôi",
-    "kpis": [
-      {
-        "icon": "recycling",
-        "title": "500 tấn nhựa tránh phát sinh",
-        "desc": "Thay thế bao bì nhựa dùng một lần bằng vật liệu gốc sinh học."
-      },
-      {
-        "icon": "water_drop",
-        "title": "5.000 tấn sinh khối được tận dụng",
-        "desc": "Thu gom lục bình/bã sinh khối, góp phần làm sạch sông rạch."
-      },
-      {
-        "icon": "groups",
-        "title": "300+ việc làm địa phương",
-        "desc": "Hợp tác 20+ HTX, tạo công ăn việc làm ổn định cho người dân."
-      },
-      {
-        "icon": "factory",
-        "title": "20 triệu đơn vị/năm",
-        "desc": "Vận hành 3 dây chuyền bán công nghiệp, mở rộng quy mô bền vững."
-      }
-    ],
-    "commitmentsTitle": "Cam kết bền vững",
-    "commitments": [
-      "100% vật liệu gốc sinh học, an toàn tiếp xúc thực phẩm.",
-      "Truy xuất nguồn gốc, minh bạch tác động môi trường – xã hội.",
-      "Thiết kế để tái chế/ủ phân; ưu tiên sản xuất ít phát thải.",
-      "Hợp tác cùng nông dân/HTX, chia sẻ lợi ích công bằng.",
-      "Tuân thủ tiêu chuẩn xanh của EU/Nhật/Mỹ."
-    ]
   },
   "impact": {
     "title": "Tối ưu hiệu quả với giải pháp xanh",

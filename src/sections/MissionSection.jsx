@@ -15,7 +15,7 @@ export default function MissionSection(){
   return (
     <section id="mission" className="section section--mission">
       <div className="mission-wrap">
-        <Typography.Title level={2} style={{ color: 'var(--color-dark)' ,fontWeight: 800}} className="fade-up">{t('mission.title')||'Our Mission'}</Typography.Title>
+        <Typography.Title level={2} style={{ color: 'var(--color-dark)' ,fontWeight: 800}} className="fade-up">{t('impact.title')||'Our Mission'}</Typography.Title>
 
         {/* Impact-style bento grid inside Mission */}
         <div className="impact-grid fade-up">
