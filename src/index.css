@@ -426,7 +426,7 @@
 }
 
 .footer-partner .partner-logo {
-  height: 28px;
+  height: 36px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -438,7 +438,7 @@
   }
 
   .footer-partner .partner-logo {
-    height: 24px;
+    height: 28px;
   }
 }
 
