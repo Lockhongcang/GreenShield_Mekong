@@ -629,6 +629,7 @@
 }
 
 .stacked-title {
+  font-size: clamp(3.2rem , 5vw, 4.2rem);
   font-weight: 900;
   color: var(--color-primary);
   display: grid;
@@ -1275,6 +1276,13 @@
 
 /* ≤768px */
 @media (max-width: 768px) {
+  /* Disable fade-up animations on mobile */
+  .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
   .site-footer {
     grid-template-columns: 1fr;
   }
@@ -1319,11 +1327,8 @@
 }
 
 @media (max-width: 480px) {
-  .btn-group-banner.fade-up.in {
-    flex-direction: column;
-  }
-
-  .btn-group-banner.fade-up.in .btn {
-    width: fit-content;
+  .banner {
+    padding: 0 2rem !important;
+    gap: 0;
   }
 }
