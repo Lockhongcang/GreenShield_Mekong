@@ -25,12 +25,12 @@ export default function ProductsSection(){
   return (
     <section id="products" className="section">
       <div style={{maxWidth:1200, width:'100%'}}>
-        <Typography.Title level={1} className="fade-up" style={{textAlign:'center', fontWeight: 'bold', marginBottom: 0 }}>
+        <Typography.Title level={1} style={{textAlign:'center', fontWeight: 'bold', marginBottom: 0 }}>
           {t('products.title')}
         </Typography.Title>
         {/* Stack gallery - 5 bước quy trình (giữ phần dưới, bỏ gallery trên) */}
         <Typography.Title level={4} style={{textAlign:'center', fontWeight: '400', margin: '0 0 2rem 0'}}>{t('products.stepsTitle')}</Typography.Title>
-        <div className="stack-gallery steps fade-up">
+        <div className="stack-gallery steps">
           {steps.map((s, idx)=> { 
             const label = t(`products.steps.${idx}.label`, { defaultValue: '' })
             const desc = t(`products.steps.${idx}.desc`, { defaultValue: '' })

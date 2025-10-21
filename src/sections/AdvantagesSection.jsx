@@ -6,17 +6,22 @@ export default function AdvantagesSection() {
   useEffect(() => {
     const vid = videoRef.current
     if (!vid) return
-    const section = vid.closest('.section')
-    const root = document.querySelector('.app-scroll') || null
+
+    let frameId
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        vid.play().catch(() => {})
-      } else {
-        vid.pause()
-      }
-    }, { root, threshold: 0.45 })
-    observer.observe(section || vid)
-    return () => observer.disconnect()
+      cancelAnimationFrame(frameId)
+      frameId = requestAnimationFrame(() => {
+        const isPlaying = !vid.paused && !vid.ended && vid.readyState > 2
+        if (entry.isIntersecting && !isPlaying) vid.play().catch(() => {})
+        else if (!entry.isIntersecting && isPlaying) vid.pause()
+      })
+    }, { threshold: [0, 0.45, 1] })
+
+    observer.observe(vid)
+    return () => {
+      cancelAnimationFrame(frameId)
+      observer.disconnect()
+    }
   }, [])
 
   return (

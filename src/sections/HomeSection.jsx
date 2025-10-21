@@ -11,7 +11,7 @@ export default function HomeSection() {
         <div className="banner-content">
           <h1 className="fade-up">{t('home.title')}</h1>
           <p className="fade-up">{t('home.subtitle')}</p>
-          <div className="fade-up" style={{ display: 'flex', flexDirection: 'row' , gap: '1rem'}}>
+          <div className="btn-group-banner fade-up" style={{ display: 'flex', flexDirection: 'row' , gap: '1rem'}}>
             <a className="btn btn-primary" href="#products">{t('cta.explore')}
               <span className="material-symbols-rounded">
                 arrow_outward
