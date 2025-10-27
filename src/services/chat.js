@@ -4,7 +4,7 @@
 // - POST   /api/v1/chat/select-topic     -> text (ack string)
 // - POST   /api/v1/chat/message          -> text (AI reply)
 
-const DEFAULT_BASE = 'http://localhost:8080';
+const DEFAULT_BASE = 'green-shield-mekong.azurewebsites.net';
 
 const base = (import.meta?.env?.VITE_CHAT_API_BASE || DEFAULT_BASE).replace(/\/$/, '');
 
