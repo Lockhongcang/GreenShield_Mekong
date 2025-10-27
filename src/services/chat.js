@@ -4,9 +4,23 @@
 // - POST   /api/v1/chat/select-topic     -> text (ack string)
 // - POST   /api/v1/chat/message          -> text (AI reply)
 
-const DEFAULT_BASE = 'green-shield-mekong.azurewebsites.net';
+// Resolve API base URL:
+// - Prefer VITE_API_BASE if provided (e.g., https://green-shield-mekong.azurewebsites.net)
+// - Fallback to the production Azure site with https scheme
+const DEFAULT_BASE = 'https://green-shield-mekong.azurewebsites.net';
 
-const base = (DEFAULT_BASE).replace(/\/$/, '');
+function normalizeBase(input) {
+	let b = (input || '').trim();
+	if (!b) return DEFAULT_BASE;
+	// If protocol missing, assume https
+	if (!/^https?:\/\//i.test(b)) {
+		b = `https://${b}`;
+	}
+	// Remove any trailing slash
+	return b.replace(/\/+$/, '');
+}
+
+const base = normalizeBase(import.meta.env?.VITE_API_BASE || DEFAULT_BASE);
 
 async function http(url, options = {}) {
 	const method = (options.method || 'GET').toUpperCase();
