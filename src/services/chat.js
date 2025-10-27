@@ -4,23 +4,8 @@
 // - POST   /api/v1/chat/select-topic     -> text (ack string)
 // - POST   /api/v1/chat/message          -> text (AI reply)
 
-// Resolve API base URL:
-// - Prefer VITE_API_BASE if provided (e.g., https://green-shield-mekong.azurewebsites.net)
-// - Fallback to the production Azure site with https scheme
 const DEFAULT_BASE = 'https://green-shield-mekong.azurewebsites.net';
-
-function normalizeBase(input) {
-	let b = (input || '').trim();
-	if (!b) return DEFAULT_BASE;
-	// If protocol missing, assume https
-	if (!/^https?:\/\//i.test(b)) {
-		b = `https://${b}`;
-	}
-	// Remove any trailing slash
-	return b.replace(/\/+$/, '');
-}
-
-const base = normalizeBase(import.meta.env?.VITE_API_BASE || DEFAULT_BASE);
+const base = (DEFAULT_BASE).replace(/\/$/, '');
 
 async function http(url, options = {}) {
 	const method = (options.method || 'GET').toUpperCase();
@@ -30,7 +15,7 @@ async function http(url, options = {}) {
 		: {};
 
 	const res = await fetch(url, {
-		// Backend relies on HttpSession cookies — include credentials
+		// Backend relies on HttpSession cookies — include credentialsnp
 		credentials: 'include',
 		headers: {
 			...defaultHeaders,
