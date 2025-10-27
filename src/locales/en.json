@@ -13,9 +13,9 @@
     "community": ["CONNECT", "IMPACT", "SOCIAL"]
   },
   "home": {
-    "title": "A green shield for the fruits of the riverlands",
-    "subtitle": "GreenLife - GreenMind - GreenSight",
-    "bannerAlt": "banner showing fruits and eco packaging"
+    "key-title": "Green Shield",
+    "title": " for the fruits of the riverlands.",
+    "subtitle": "GreenLife - GreenMind - GreenSight"
   },
   "cta": {
     "explore": "Explore",

@@ -13,9 +13,9 @@
     "community": ["KẾT NỐI", "TÁC ĐỘNG", "XÃ HỘI"]
   },
   "home": {
-    "title": "Lá chắn xanh cho trái cây miền sông nước",
-    "subtitle": "Cuộc sống xanh - Tầm nhìn xanh - Tâm Trí Xanh",
-    "bannerAlt": "banner showing fruits and eco packaging"
+    "key-title": "Lá chắn xanh",
+    "title": " cho trái cây miền sông nước.",
+    "subtitle": "Cuộc sống xanh - Tầm nhìn xanh - Tâm Trí Xanh"
   },
   "cta": {
     "explore": "Khám phá",

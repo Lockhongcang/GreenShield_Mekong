@@ -7,7 +7,7 @@
 html, body, #root {
   height: 100%;
   margin: 0;
-  background: var(--color-light);
+  background: #f4f4f4;
   color: var(--color-dark);
   font-family: var(--font-family);
 }
@@ -32,10 +32,31 @@ p, .ant-typography, .ant-typography p { font-size: clamp(0.95rem, 1vw, 1.05rem);
   cursor: pointer;
   transition: transform var(--transition-fast);
 }
-.btn-primary { background: var(--color-primary); color: #fff; font-weight: 600; }
-.btn-transparent { background: transparent; border: 2px solid #fff; color: #fff; font-weight: 600; }
 
-/* ensure anchor buttons stay white despite default link color */
-a.btn, a.btn-primary, a.btn-transparent { color: #fff !important; }
-a.btn .material-symbols-rounded { color: #fff; }
-.btn:active { transform: translateY(1px); }
+/* --- Global UX guard: reduce copy/drag/save behaviors (except form fields) --- */
+/* Disable selection and touch callout across the app */
+html, body, #root, body *:not(input):not(textarea):not(select):not([contenteditable="true"]) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none; /* iOS long-press menu */
+}
+
+/* Re-enable selection for form controls and editable regions */
+input, textarea, select, [contenteditable="true"] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+}
+
+/* Prevent drag of media elements */
+img, svg, picture, video, canvas { 
+  -webkit-user-drag: none; /* Safari/Chrome */
+  -webkit-touch-callout: none;
+}
+
+/* Optional: hide selection highlight if any slips through */
+::selection { background: transparent; }

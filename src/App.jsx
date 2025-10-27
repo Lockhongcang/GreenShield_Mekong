@@ -11,6 +11,7 @@ import CommunitySection from './sections/CommunitySection'
 import logo from './assets/logo.png';
 import logolg from './assets/logo-lg.png';
 import BackToTop from './components/BackToTop'
+import ChatWidget from './components/ChatWidget'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
         <CommunitySection />
         <ContactSection />
       </main>
+      <ChatWidget />
       <BackToTop />
     </>
   )
