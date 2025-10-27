@@ -4,9 +4,7 @@
 // - POST   /api/v1/chat/select-topic     -> text (ack string)
 // - POST   /api/v1/chat/message          -> text (AI reply)
 
-const DEFAULT_BASE = 'green-shield-mekong.azurewebsites.net';
-
-const base = (import.meta?.env?.VITE_CHAT_API_BASE || DEFAULT_BASE).replace(/\/$/, '');
+const base = (import.meta?.env?.VITE_CHAT_API_BASE || '').replace(/\/$/, '');
 
 async function http(url, options = {}) {
 	const method = (options.method || 'GET').toUpperCase();
