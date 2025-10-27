@@ -196,7 +196,11 @@ export default function ChatWidget() {
       setError('');
       const ack = await selectTopic(key);
       setSelectedTopic(key);
-      setMessages((prev) => ([...prev, { role: 'system', text: String(ack) }]));
+      // Remove the initial "Vui lòng chọn chủ đề!" notice (if present) to avoid confusion
+      setMessages((prev) => {
+        const cleaned = prev.filter((m) => !(m.role === 'system' && /chọn chủ đề/i.test(m.text)));
+        return [...cleaned, { role: 'system', text: String(ack) }];
+      });
     } catch (e) {
       setError(e?.message || 'Failed to select topic');
       setMessages((prev) => ([...prev, { role: 'ai', text: '- Lubot đang bận, bạn vui lòng liên hệ lại nhé!' }]));
