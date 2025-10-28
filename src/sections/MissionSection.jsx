@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import mascot from '../assets/mascot-gsm-01.png'
 import NumberTicker from '../components/NumberTicker'
 
-export default function MissionSection(){
+export default function MissionSection() {
   const { t } = useTranslation()
   const tiles = [
     { key: 'a', variant: 'media', bg: "url('https://res.cloudinary.com/dnini39bp/image/upload/fl_preserve_transparency/v1758474130/z7036284704623_aae64d76745a3583c28a1657dbd18a3f_xoqkzn.jpg?_s=public-apps')" },
@@ -12,10 +12,17 @@ export default function MissionSection(){
     { key: 'c', variant: 'soft' },
     { key: 'd', variant: 'dark' }
   ]
+
   return (
     <section id="mission" className="section section--mission">
       <div className="mission-wrap">
-        <Typography.Title level={2} style={{ color: 'var(--color-dark)' ,fontWeight: 800}} className="fade-up">{t('impact.title')||'Our Mission'}</Typography.Title>
+        <Typography.Title
+          level={2}
+          style={{ color: 'var(--color-dark)', fontWeight: 800 }}
+          className="fade-up"
+        >
+          {t('impact.title') || 'Our Mission'}
+        </Typography.Title>
 
         {/* Impact-style bento grid inside Mission */}
         <div className="impact-grid fade-up">
@@ -25,32 +32,51 @@ export default function MissionSection(){
             const value = t(`impact.${td.key}.value`)
             const label = t(`impact.${td.key}.label`)
             const desc = t(`impact.${td.key}.desc`)
-            // Split value into numeric and unit parts (e.g., "500 tấn" -> 500 and " tấn", "20M" -> 20 and "M")
-            const match = String(value).match(/^(\d+[\d,.]*)(.*)$/)
-            const numPart = match ? match[1].replace(/[,\s]/g, '') : ''
-            const unitPart = match ? match[2] : ''
-            const isNumber = numPart !== '' && !isNaN(Number(numPart))
+
+            // ✅ Cải tiến parsing: hỗ trợ số có dấu phẩy hoặc chấm, thập phân, đơn vị sau số
+            const match = String(value).match(/^([\d.,]+)\s*(.*)$/)
+            let numPart = ''
+            let unitPart = ''
+            let numericValue = null
+
+            if (match) {
+              numPart = match[1].replace(',', '.') // đổi dấu phẩy thành chấm
+              unitPart = match[2]
+              numericValue = parseFloat(numPart)
+            }
+
+            const isNumber = !isNaN(numericValue)
+
             return (
-              <div key={idx} className={base} style={td.bg ? { backgroundImage: td.bg } : undefined}>
+              <div
+                key={idx}
+                className={base}
+                style={td.bg ? { backgroundImage: td.bg } : undefined}
+              >
                 <div className="impact-inner">
                   <div className="impact-kicker">{kicker}</div>
                   <div className="impact-value">
                     {isNumber ? (
                       <>
-                        <NumberTicker value={Number(numPart)} duration={1200} />
-                        <span className="impact-suffix">{unitPart || ''}{td.key==='b' ? '+' : ''}</span>
+                        <NumberTicker value={numericValue} duration={1200} />
+                        <span className="impact-suffix">
+                          {unitPart || ''}
+                          {td.key === 'b' ? '+' : ''}
+                        </span>
                       </>
                     ) : (
                       <>
                         {value}
-                        {td.key==='b' && <span className="impact-suffix">+</span>}
+                        {td.key === 'b' && <span className="impact-suffix">+</span>}
                       </>
                     )}
                   </div>
                   <div className="impact-label">{label}</div>
                   <div className="impact-desc">{desc}</div>
-                  {td.variant==='lime' && (
-                    <button className="impact-cta" aria-label="go"><span className="material-symbols-rounded">north_east</span></button>
+                  {td.variant === 'lime' && (
+                    <button className="impact-cta" aria-label="go">
+                      <span className="material-symbols-rounded">north_east</span>
+                    </button>
                   )}
                 </div>
               </div>

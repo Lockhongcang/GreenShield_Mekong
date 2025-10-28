@@ -4,7 +4,7 @@
     "about": "GIỚI THIỆU",
     "products": "SẢN PHẨM",
     "advantages": "LỢI THẾ",
-    "mission": "SỨ MỆNH",
+    "mission": "THỰC TRẠNG",
     "community": "CỘNG ĐỒNG",
     "contact": "LIÊN HỆ"
   },
@@ -26,11 +26,26 @@
     "title": "Sản phẩm & Công nghệ",
     "stepsTitle": "Quy trình gồm 5 bước",
     "steps": [
-      { "label": "Thu gom", "desc": "Lục bình, bã mía và giấy tái chế được thu thập từ địa phương." },
-      { "label": "Phơi khô", "desc": "Nguyên liệu được phơi khô để loại bỏ độ ẩm." },
-      { "label": "Xử lí", "desc": "Nguyên liệu được xử lí đạt tiêu chuẩn trước khi tạo hình." },
-      { "label": "Ép khuôn", "desc": "Hỗn hợp được đưa vào khuôn để tạo hình (khay, hộp, tấm lót)." },
-      { "label": "Đóng gói & phân phối", "desc": "Sản phẩm hoàn thiện được kiểm tra, đóng gói và giao đến khách hàng." }
+      {
+        "label": "Thu gom",
+        "desc": "Lục bình, bã mía và giấy tái chế được thu thập từ địa phương."
+      },
+      {
+        "label": "Phơi khô",
+        "desc": "Nguyên liệu được phơi khô để loại bỏ độ ẩm."
+      },
+      {
+        "label": "Xử lí",
+        "desc": "Nguyên liệu được xử lí đạt tiêu chuẩn trước khi tạo hình."
+      },
+      {
+        "label": "Ép khuôn",
+        "desc": "Hỗn hợp được đưa vào khuôn để tạo hình (khay, hộp, tấm lót)."
+      },
+      {
+        "label": "Đóng gói & phân phối",
+        "desc": "Sản phẩm hoàn thiện được kiểm tra, đóng gói và giao đến khách hàng."
+      }
     ]
   },
   "about": {
@@ -52,30 +67,30 @@
     }
   },
   "impact": {
-    "title": "Tối ưu hiệu quả với giải pháp xanh",
+    "title": "Giải pháp bao bì xanh từ lục bình Mekong",
     "a": {
-      "kicker": "Chứng nhận an toàn",
-      "value": "100%",
-      "label": "vật liệu gốc sinh học",
-      "desc": "An toàn tiếp xúc thực phẩm, thiết kế hướng tới ủ phân/tái chế."
+      "kicker": "Thực trạng môi trường",
+      "value": "3,1 triệu",
+      "label": "tấn nhựa/năm tại Việt Nam",
+      "desc": "Trong đó 5–10% đến từ ngành nông nghiệp và bao gói nông sản – gây áp lực lớn lên hệ sinh thái sông ngòi (Bộ TN&MT, 2023)."
     },
     "b": {
-      "kicker": "Tác động môi trường",
-      "value": "500 tấn",
-      "label": "nhựa tránh phát sinh",
-      "desc": "Mục tiêu 3 năm thông qua thay thế bao bì dùng một lần."
+      "kicker": "Nguồn nguyên liệu địa phương",
+      "value": "40%",
+      "label": "diện tích mặt nước bị lục bình phủ",
+      "desc": "Lục bình sinh trưởng nhanh, gây tắc nghẽn dòng chảy và suy giảm đa dạng sinh học — nhưng có thể tận dụng làm vật liệu sinh học, giảm ô nhiễm nhựa."
     },
     "c": {
-      "kicker": "Hợp tác triển khai",
-      "value": "20+",
-      "label": "hợp tác xã đối tác",
-      "desc": "Đồng hành địa phương, tạo việc làm bền vững."
+      "kicker": "Xu hướng toàn cầu",
+      "value": "23,7 tỷ",
+      "label": "USD thị trường bao bì sinh học 2027",
+      "desc": "Bao bì phân hủy sinh học tăng trưởng 14%/năm; EU, Nhật, Mỹ yêu cầu bao bì xanh, mở cơ hội xuất khẩu bền vững cho nông sản Việt."
     },
     "d": {
-      "kicker": "Năng lực sản xuất",
-      "value": "20 triệu",
-      "label": "đơn vị mỗi năm",
-      "desc": "Mục tiêu quy mô năm thứ 3 với 3 dây chuyền bán công nghiệp."
+      "kicker": "Tác động xã hội – ESG",
+      "value": "90%",
+      "label": "lao động nữ trong mô hình ECOKA",
+      "desc": "Tương tự ECOKA, GreenShield Mekong hướng đến ESG: giảm phát thải, tạo việc làm xanh, và minh bạch chuỗi sản xuất – lan tỏa kinh tế tuần hoàn vùng ĐBSCL."
     }
   },
   "community": {
@@ -106,7 +121,7 @@
     "join": "Tham gia cộng đồng",
     "joinBtn": "Tham gia",
     "testimonialsTitle": "Phản hồi từ cộng đồng"
-    },
+  },
   "footer": {
     "tagline": "Lá chắn xanh cho trái cây miền sông nước",
     "services": {
@@ -126,8 +141,7 @@
     },
     "partnerLabel": "Hợp tác cùng",
     "partnerAlt": "logo đối tác"
-  }
-  ,
+  },
   "contact": {
     "newsletter": {
       "title": "Đăng ký nhận bản tin",

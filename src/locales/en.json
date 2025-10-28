@@ -4,7 +4,7 @@
     "about": "About",
     "products": "Products",
     "advantages": "Advantages",
-    "mission": "Mission",
+    "mission": "Context",
     "community": "Community",
     "contact": "Contact"
   },
@@ -26,11 +26,26 @@
     "title": "Products & Technology",
     "stepsTitle": "5-step process",
     "steps": [
-      { "label": "Collection", "desc": "Water hyacinth, bagasse and recycled paper are collected locally." },
-      { "label": "Drying", "desc": "Materials are sun-dried to remove moisture." },
-      { "label": "Processing", "desc": "Materials are processed to meet standards before forming." },
-      { "label": "Molding", "desc": "Mixture is pressed into molds to form trays, boxes and liners." },
-      { "label": "Packing & distribution", "desc": "Finished products are inspected, packed and delivered." }
+      {
+        "label": "Collection",
+        "desc": "Water hyacinth, bagasse and recycled paper are collected locally."
+      },
+      {
+        "label": "Drying",
+        "desc": "Materials are sun-dried to remove moisture."
+      },
+      {
+        "label": "Processing",
+        "desc": "Materials are processed to meet standards before forming."
+      },
+      {
+        "label": "Molding",
+        "desc": "Mixture is pressed into molds to form trays, boxes and liners."
+      },
+      {
+        "label": "Packing & distribution",
+        "desc": "Finished products are inspected, packed and delivered."
+      }
     ]
   },
   "about": {
@@ -50,8 +65,7 @@
         "desc": "Sourcing from farmers and creating stable community employment."
       }
     }
-  }
-  ,
+  },
   "community": {
     "title": "Connection & social impact",
     "pillars": {
@@ -82,33 +96,32 @@
     "testimonialsTitle": "Community feedback"
   },
   "impact": {
-    "title": "Driving impact with green packaging",
+    "title": "Green packaging innovation from Mekong hyacinth",
     "a": {
-      "kicker": "Safety & standards",
-      "value": "100%",
-      "label": "bio-based materials",
-      "desc": "Food-contact safe, designed for composting/recycling."
+      "kicker": "Environmental context",
+      "value": "3.1M",
+      "label": "tons of plastic waste/year in Vietnam",
+      "desc": "5–10% originates from agriculture and packaging — adding pressure on river ecosystems (MONRE, 2023)."
     },
     "b": {
-      "kicker": "Environmental outcomes",
-      "value": "500 tons",
-      "label": "plastic avoided",
-      "desc": "3-year goal by replacing single-use packaging."
+      "kicker": "Local material source",
+      "value": "40%",
+      "label": "water surface covered by hyacinth",
+      "desc": "Hyacinth doubles its biomass every 15–20 days, clogging waterways — yet can be upcycled into bio-packaging to cut plastic waste."
     },
     "c": {
-      "kicker": "Local partnership",
-      "value": "20+",
-      "label": "co-op partners",
-      "desc": "Work with communities and create sustainable jobs."
+      "kicker": "Global trend",
+      "value": "23.7B",
+      "label": "USD biodegradable packaging market by 2027",
+      "desc": "Growing 14% annually as EU, Japan and the US tighten green packaging standards — unlocking export opportunities for Vietnam."
     },
     "d": {
-      "kicker": "Production capacity",
-      "value": "20M",
-      "label": "units per year",
-      "desc": "Year-3 scale with three semi-industrial lines."
+      "kicker": "Social & ESG impact",
+      "value": "90%",
+      "label": "female workforce in ECOKA model",
+      "desc": "Like ECOKA, GreenShield Mekong embeds ESG — reducing CO₂, empowering rural women and promoting circular economy in the Mekong Delta."
     }
-  }
-  ,
+  },
   "footer": {
     "tagline": "Green shield for Mekong fruits",
     "services": {
@@ -128,8 +141,7 @@
     },
     "partnerLabel": "In partnership with",
     "partnerAlt": "partner logo"
-  }
-  ,
+  },
   "contact": {
     "newsletter": {
       "title": "Subscribe to our newsletter",

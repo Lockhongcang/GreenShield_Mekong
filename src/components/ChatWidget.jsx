@@ -146,42 +146,45 @@ export default function ChatWidget() {
   }, []);
 
   // Delay showing the chat button by ~4.5s and play a sound once when it appears
+  // --- Âm thanh Lubi xuất hiện chỉ 1 lần ---
   useEffect(() => {
-    // Preload the sound for quicker playback
-    lubiAudioRef.current = new Audio(LubiSound);
-    try { lubiAudioRef.current.preload = 'auto'; } catch { /* ignore */ }
-    lubiAudioRef.current.volume = 0.6;
+    // Tạo đối tượng Audio duy nhất khi component mount
+    const audio = new Audio(LubiSound);
+    audio.preload = 'auto';
+    audio.volume = 0.6;
+    lubiAudioRef.current = audio;
 
-    const safePlay = () => {
-      const a = lubiAudioRef.current;
-      if (!a) return;
+    // Hàm phát an toàn (bắt autoplay chặn)
+    const playOnce = () => {
+      if (!lubiAudioRef.current) return;
       try {
-        const p = a.play();
-        if (p && typeof p.then === 'function') {
-          p.catch(() => {
-            // Autoplay likely blocked; wait for first user interaction
+        const playPromise = lubiAudioRef.current.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+          playPromise.catch(() => {
             const unlock = () => {
               try {
-                a.currentTime = 0;
-                const pp = a.play();
-                if (pp && typeof pp.then === 'function') pp.catch(() => {});
-              } catch { /* ignore */ }
+                lubiAudioRef.current.currentTime = 0;
+                lubiAudioRef.current.play().catch(() => { });
+              } catch { /* ignore */}
             };
-            window.addEventListener('pointerdown', unlock, { once: true, passive: true });
+            window.addEventListener('pointerdown', unlock, { once: true });
             window.addEventListener('keydown', unlock, { once: true });
-            window.addEventListener('touchstart', unlock, { once: true, passive: true });
+            window.addEventListener('touchstart', unlock, { once: true });
           });
         }
       } catch { /* ignore */ }
     };
 
-    const t = setTimeout(() => {
+    // Sau 4.5s mới xuất hiện nút, đồng thời phát âm thanh 1 lần
+    const timer = setTimeout(() => {
       setShowButton(true);
       setShowTeaser(true);
-      safePlay();
+      playOnce(); // 🔊 Chỉ phát ở đây — khi Lubi hiện ra
     }, 4500);
-    return () => clearTimeout(t);
+
+    return () => clearTimeout(timer);
   }, []);
+
 
   // Auto-hide the teaser after ~30s or when panel opens
   useEffect(() => {
@@ -196,11 +199,7 @@ export default function ChatWidget() {
       setError('');
       const ack = await selectTopic(key);
       setSelectedTopic(key);
-      // Remove the initial "Vui lòng chọn chủ đề!" notice (if present) to avoid confusion
-      setMessages((prev) => {
-        const cleaned = prev.filter((m) => !(m.role === 'system' && /chọn chủ đề/i.test(m.text)));
-        return [...cleaned, { role: 'system', text: String(ack) }];
-      });
+      setMessages((prev) => ([...prev, { role: 'system', text: String(ack) }]));
     } catch (e) {
       setError(e?.message || 'Failed to select topic');
       setMessages((prev) => ([...prev, { role: 'ai', text: '- Lubot đang bận, bạn vui lòng liên hệ lại nhé!' }]));
@@ -214,7 +213,7 @@ export default function ChatWidget() {
       inputRef.current.focus();
     }
   }, [open]);
-  
+
 
   async function handleSend(ev) {
     ev?.preventDefault?.();
@@ -290,14 +289,6 @@ export default function ChatWidget() {
           onClick={() => {
             setOpen(true);
             setShowTeaser(false);
-            try {
-              const a = lubiAudioRef.current;
-              if (a) {
-                a.currentTime = 0;
-                const p = a.play();
-                if (p && typeof p.then === 'function') p.catch(() => {});
-              }
-      } catch { /* ignore */ }
           }}
         >
           {showTeaser && (
@@ -350,129 +341,129 @@ export default function ChatWidget() {
                 draggable={false}
               />
               <div className="cwp-inner">
-              <div className="cwp-header">
-                <div className="cwp-title">
-                  Lubot
+                <div className="cwp-header">
+                  <div className="cwp-title">
+                    Lubot
+                  </div>
+                  <button className="cwp-x" onClick={() => setOpen(false)} aria-label="Close">
+                    <span className="material-symbols-rounded" aria-hidden>close</span>
+                  </button>
                 </div>
-                <button className="cwp-x" onClick={() => setOpen(false)} aria-label="Close">
-                  <span className="material-symbols-rounded" aria-hidden>close</span>
-                </button>
-              </div>
 
-              <div className="cwp-topics">
-                {loading && topicKeys.length === 0 && (
-                  <div className="cwp-hint">Loading topics…</div>
-                )}
-                {error && (
-                  <div className="cwp-error" role="alert">{error}</div>
-                )}
-                {topicKeys.length > 0 && (
-                  <Select
-                    className="cwp-select"
-                    placeholder="Chọn chủ đề…"
-                    value={selectedTopic || undefined}
-                    onChange={(val) => handleSelectTopic(val)}
-                    disabled={loading}
-                    loading={loading}
-                    size="middle"
-                    popupClassName="cwp-select-dropdown"
-                    options={topicKeys.map((key) => ({
-                      value: key,
-                      label: (
-                        <span className="cwp-opt" title={TOPIC_LABELS[key] || key}>
-                          <span className="material-symbols-rounded cwp-opt-ic" aria-hidden>
-                            {TOPIC_ICONS[key] || TOPIC_ICONS.default}
+                <div className="cwp-topics">
+                  {loading && topicKeys.length === 0 && (
+                    <div className="cwp-hint">Loading topics…</div>
+                  )}
+                  {error && (
+                    <div className="cwp-error" role="alert">{error}</div>
+                  )}
+                  {topicKeys.length > 0 && (
+                    <Select
+                      className="cwp-select"
+                      placeholder="Chọn chủ đề…"
+                      value={selectedTopic || undefined}
+                      onChange={(val) => handleSelectTopic(val)}
+                      disabled={loading}
+                      loading={loading}
+                      size="middle"
+                      popupClassName="cwp-select-dropdown"
+                      options={topicKeys.map((key) => ({
+                        value: key,
+                        label: (
+                          <span className="cwp-opt" title={TOPIC_LABELS[key] || key}>
+                            <span className="material-symbols-rounded cwp-opt-ic" aria-hidden>
+                              {TOPIC_ICONS[key] || TOPIC_ICONS.default}
+                            </span>
+                            {TOPIC_LABELS[key] || key}
                           </span>
-                          {TOPIC_LABELS[key] || key}
-                        </span>
-                      ),
-                    }))}
-                  />
-                )}
-              </div>
+                        ),
+                      }))}
+                    />
+                  )}
+                </div>
 
-              <div className="cwp-body" ref={bodyRef}>
-                {messages.length === 0 ? (
-                  <div className="cwp-empty">Select a topic, then ask me anything.</div>
-                ) : (
-                  <ScrollToBottom className="cwp-scroll">
-                    <ul className="cwp-messages">
-                      {messages.map((m, i) => {
-                        // System notice centered outside bubbles
-                        if (m.role === 'system') {
-                          return (
-                            <li key={i} className="cwp-notice">
-                              <span>{m.text}</span>
-                            </li>
-                          );
-                        }
+                <div className="cwp-body" ref={bodyRef}>
+                  {messages.length === 0 ? (
+                    <div className="cwp-empty">Select a topic, then ask me anything.</div>
+                  ) : (
+                    <ScrollToBottom className="cwp-scroll">
+                      <ul className="cwp-messages">
+                        {messages.map((m, i) => {
+                          // System notice centered outside bubbles
+                          if (m.role === 'system') {
+                            return (
+                              <li key={i} className="cwp-notice">
+                                <span>{m.text}</span>
+                              </li>
+                            );
+                          }
 
-                        // AI message: two rows (logo+name) then content
-                        if (m.role === 'ai') {
+                          // AI message: two rows (logo+name) then content
+                          if (m.role === 'ai') {
+                            return (
+                              <Motion.li
+                                key={i}
+                                className="msg msg--ai"
+                                initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                transition={{ duration: 0.22, ease: 'easeOut' }}
+                              >
+                                <div className="msg-ai">
+                                  <div className="msg-ai-head">
+                                    <span className="material-symbols-rounded msg-ai-logo" aria-hidden>auto_awesome</span>
+                                    <span className="msg-ai-name">Lubot</span>
+                                  </div>
+                                  <div className="msg-bubble msg-ai-body">
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                      {m.text}
+                                    </ReactMarkdown>
+                                  </div>
+                                </div>
+                              </Motion.li>
+                            );
+                          }
+
+                          // User message: regular bubble
                           return (
                             <Motion.li
                               key={i}
-                              className="msg msg--ai"
+                              className="msg msg--user"
                               initial={{ opacity: 0, y: 8, scale: 0.98 }}
                               animate={{ opacity: 1, y: 0, scale: 1 }}
                               transition={{ duration: 0.22, ease: 'easeOut' }}
                             >
-                              <div className="msg-ai">
-                                <div className="msg-ai-head">
-                                  <span className="material-symbols-rounded msg-ai-logo" aria-hidden>auto_awesome</span>
-                                  <span className="msg-ai-name">Lubot</span>
-                                </div>
-                                <div className="msg-bubble msg-ai-body">
-                                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                    {m.text}
-                                  </ReactMarkdown>
-                                </div>
+                              <div className="msg-bubble">
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                  {m.text}
+                                </ReactMarkdown>
                               </div>
                             </Motion.li>
                           );
-                        }
-
-                        // User message: regular bubble
-                        return (
-                          <Motion.li
-                            key={i}
-                            className="msg msg--user"
-                            initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            transition={{ duration: 0.22, ease: 'easeOut' }}
-                          >
-                            <div className="msg-bubble">
-                              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                                {m.text}
-                              </ReactMarkdown>
+                        })}
+                        {isBotTyping && (
+                          <li className="msg msg--ai">
+                            <div className="msg-bubble typing">
+                              <span></span><span></span><span></span>
                             </div>
-                          </Motion.li>
-                        );
-                      })}
-                      {isBotTyping && (
-                        <li className="msg msg--ai">
-                          <div className="msg-bubble typing">
-                            <span></span><span></span><span></span>
-                          </div>
-                        </li>
-                      )}
-                    </ul>
-                  </ScrollToBottom>
-                )}
-              </div>
+                          </li>
+                        )}
+                      </ul>
+                    </ScrollToBottom>
+                  )}
+                </div>
 
-              <form className="cwp-input" onSubmit={handleSend}>
-                <input
-                  ref={inputRef}
-                  type="text"
-                  placeholder={selectedTopic ? 'Type your message…' : 'Select a topic first'}
-                  disabled={!selectedTopic || loading}
-                  aria-disabled={!selectedTopic || loading}
-                />
-                <button type="submit" disabled={!selectedTopic || loading}>
-                  <span className="material-symbols-rounded" aria-hidden>arrow_outward</span>
-                </button>
-              </form>
+                <form className="cwp-input" onSubmit={handleSend}>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    placeholder={selectedTopic ? 'Type your message…' : 'Select a topic first'}
+                    disabled={!selectedTopic || loading}
+                    aria-disabled={!selectedTopic || loading}
+                  />
+                  <button type="submit" disabled={!selectedTopic || loading}>
+                    <span className="material-symbols-rounded" aria-hidden>arrow_outward</span>
+                  </button>
+                </form>
               </div>
             </Motion.div>
           </>
