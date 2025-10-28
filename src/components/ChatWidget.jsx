@@ -145,42 +145,11 @@ export default function ChatWidget() {
     };
   }, []);
 
-  // Delay showing the chat button by ~4.5s and play a sound once when it appears
-  // --- Âm thanh Lubi xuất hiện chỉ 1 lần ---
   useEffect(() => {
-    // Tạo đối tượng Audio duy nhất khi component mount
-    const audio = new Audio(LubiSound);
-    audio.preload = 'auto';
-    audio.volume = 0.6;
-    lubiAudioRef.current = audio;
-
-    // Hàm phát an toàn (bắt autoplay chặn)
-    const playOnce = () => {
-      if (!lubiAudioRef.current) return;
-      try {
-        const playPromise = lubiAudioRef.current.play();
-        if (playPromise && typeof playPromise.then === 'function') {
-          playPromise.catch(() => {
-            const unlock = () => {
-              try {
-                lubiAudioRef.current.currentTime = 0;
-                lubiAudioRef.current.play().catch(() => { });
-              } catch { /* ignore */}
-            };
-            window.addEventListener('pointerdown', unlock, { once: true });
-            window.addEventListener('keydown', unlock, { once: true });
-            window.addEventListener('touchstart', unlock, { once: true });
-          });
-        }
-      } catch { /* ignore */ }
-    };
-
-    // Sau 4.5s mới xuất hiện nút, đồng thời phát âm thanh 1 lần
     const timer = setTimeout(() => {
       setShowButton(true);
       setShowTeaser(true);
-      playOnce(); // 🔊 Chỉ phát ở đây — khi Lubi hiện ra
-    }, 4500);
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -289,6 +258,35 @@ export default function ChatWidget() {
           onClick={() => {
             setOpen(true);
             setShowTeaser(false);
+
+            // 🔊 Play Lubi sound mỗi lần mở chat
+            try {
+              let audio = lubiAudioRef.current;
+              if (!audio) {
+                audio = new Audio(LubiSound);
+                audio.preload = 'auto';
+                audio.volume = 0.6;
+                lubiAudioRef.current = audio;
+              }
+              audio.currentTime = 0;
+              const playPromise = audio.play();
+              if (playPromise && typeof playPromise.then === 'function') {
+                playPromise.catch(() => {
+                  // nếu bị chặn autoplay thì phát lại khi user click
+                  const unlock = () => {
+                    try {
+                      audio.currentTime = 0;
+                      audio.play().catch(() => { });
+                    } catch { /* ignore */}
+                  };
+                  window.addEventListener('pointerdown', unlock, { once: true });
+                  window.addEventListener('keydown', unlock, { once: true });
+                  window.addEventListener('touchstart', unlock, { once: true });
+                });
+              }
+            } catch (err) {
+              console.warn('Cannot play Lubi sound', err);
+            }
           }}
         >
           {showTeaser && (
