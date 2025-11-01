@@ -894,16 +894,15 @@ a.btn .material-symbols-rounded {
   }
 
   .section#home {
-    height: 50vh !important;
+    height: 100vh !important;
   }
 
   .banner {
-    top: 30vh;
     background-size: 150%;
   }
 
   .banner-content {
-    height: 70vh;
+    height: 50vh;
     padding: 2rem 1rem;
   }
 }
