@@ -20,6 +20,52 @@
   pointer-events: none;
   touch-action: pan-y;
 }
+/* Visibility helpers for desktop vs mobile variants */
+.cwb-desktop { display: block; }
+.cwb-mobile { display: none; }
+
+@media (max-width: 640px) {
+  .cwb-desktop { display: none; }
+  .cwb-mobile { display: inline-grid; }
+}
+
+/* Mobile small chat button styled like Back-to-Top */
+.chat-mobile-button {
+  position: fixed;
+  right: 18px;
+  bottom: calc(18px + 44px + 14px); /* sit above Back-to-Top button */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: var(--card-shadow);
+  z-index: 210; /* above back-to-top (z-index: 200) */
+  border: none;
+  cursor: pointer;
+  transition: opacity 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  animation: btt-pulse 2.4s ease-in-out infinite;
+}
+
+.chat-mobile-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(1, 50, 55, .22);
+}
+
+.chat-mobile-button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(76, 167, 113, .35), 0 10px 28px rgba(1, 50, 55, .22);
+  outline: none;
+}
+
+.chat-mobile-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
 
 /* Responsive sizing overrides for the floating chat button (keep base as desktop) */
 @media (max-width: 1440px) {
@@ -508,6 +554,14 @@
     }
     .chat-widget-panel {
       backdrop-filter: none; /* drop heavy blur on mobile for perf */
+    }
+  }
+
+  /* When keyboard is open (detected via focus in React), lower the panel a bit on mobile */
+  @media (max-width: 768px) {
+    .chat-widget-panel.is-keyboard {
+      bottom: max(12px, env(safe-area-inset-bottom));
+      height: 55vh;
     }
   }
 

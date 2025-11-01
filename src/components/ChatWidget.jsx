@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import NormalImg from '../assets/Normal.PNG';
 import FlyingImg from '../assets/Flying.PNG';
 import ChatboxImg from '../assets/chatbox.png';
+import LogoFade from '../assets/logo-fade.png';
 import LubiSound from '../assets/Lubi-sound.m4a';
 import { getTopics, selectTopic, sendMessage } from '../services/chat';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
@@ -31,6 +32,7 @@ export default function ChatWidget() {
   const [showButton, setShowButton] = useState(false);
   const [showTeaser, setShowTeaser] = useState(false);
   const lubiAudioRef = useRef(null);
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
 
   // Friendly Vietnamese labels for known topic keys
   const TOPIC_LABELS = {
@@ -251,29 +253,70 @@ export default function ChatWidget() {
     <>
       {/* Floating open button (hide when panel is open) */}
       {!open && showButton && (
-        <div className="chat-widget-button" aria-hidden={false}>
-          {showTeaser && (
-            <div className="chat-widget-teaser" aria-hidden>
-              Bạn cần gì đó có <strong>Lubi</strong> lo!
-            </div>
-          )}
-          <img
-            src={isScrolling ? FlyingImg : NormalImg}
-            alt=""
-            className="chat-widget-icon"
-            aria-hidden
-            draggable={false}
-          />
-          {/* Smaller clickable hotspot so scrolling passes through around it */}
+        <>
+          {/* Desktop / Tablet: large mascot visual with hotspot */}
+          <div className="chat-widget-button cwb-desktop" aria-hidden={false}>
+            {showTeaser && (
+              <div className="chat-widget-teaser" aria-hidden>
+                Bạn cần gì đó có <strong>Lubi</strong> lo!
+              </div>
+            )}
+            <img
+              src={isScrolling ? FlyingImg : NormalImg}
+              alt=""
+              className="chat-widget-icon"
+              aria-hidden
+              draggable={false}
+            />
+            {/* Smaller clickable hotspot so scrolling passes through around it */}
+            <button
+              type="button"
+              aria-label="Open chat"
+              className="chat-widget-hotspot"
+              onClick={() => {
+                setOpen(true);
+                setShowTeaser(false);
+
+                // 🔊 Play Lubi sound mỗi lần mở chat
+                try {
+                  let audio = lubiAudioRef.current;
+                  if (!audio) {
+                    audio = new Audio(LubiSound);
+                    audio.preload = 'auto';
+                    audio.volume = 0.6;
+                    lubiAudioRef.current = audio;
+                  }
+                  audio.currentTime = 0;
+                  const playPromise = audio.play();
+                  if (playPromise && typeof playPromise.then === 'function') {
+                    playPromise.catch(() => {
+                      // nếu bị chặn autoplay thì phát lại khi user click
+                      const unlock = () => {
+                        try {
+                          audio.currentTime = 0;
+                          audio.play().catch(() => { });
+                        } catch { /* ignore */ }
+                      };
+                      window.addEventListener('pointerdown', unlock, { once: true });
+                      window.addEventListener('keydown', unlock, { once: true });
+                      window.addEventListener('touchstart', unlock, { once: true });
+                    });
+                  }
+                } catch (err) {
+                  console.warn('Cannot play Lubi sound', err);
+                }
+              }}
+            />
+          </div>
+
+          {/* Mobile: small round button with logo-like image and back-to-top effects */}
           <button
             type="button"
             aria-label="Open chat"
-            className="chat-widget-hotspot"
+            className="chat-mobile-button cwb-mobile"
             onClick={() => {
               setOpen(true);
               setShowTeaser(false);
-
-              // 🔊 Play Lubi sound mỗi lần mở chat
               try {
                 let audio = lubiAudioRef.current;
                 if (!audio) {
@@ -283,27 +326,15 @@ export default function ChatWidget() {
                   lubiAudioRef.current = audio;
                 }
                 audio.currentTime = 0;
-                const playPromise = audio.play();
-                if (playPromise && typeof playPromise.then === 'function') {
-                  playPromise.catch(() => {
-                    // nếu bị chặn autoplay thì phát lại khi user click
-                    const unlock = () => {
-                      try {
-                        audio.currentTime = 0;
-                        audio.play().catch(() => { });
-                      } catch { /* ignore */ }
-                    };
-                    window.addEventListener('pointerdown', unlock, { once: true });
-                    window.addEventListener('keydown', unlock, { once: true });
-                    window.addEventListener('touchstart', unlock, { once: true });
-                  });
-                }
-              } catch (err) {
-                console.warn('Cannot play Lubi sound', err);
+                audio.play().catch(() => { /* ignore */ });
+              } catch {
+                /* ignore */
               }
             }}
-          />
-        </div>
+          >
+            <img src={LogoFade} alt="Open chat" className="chat-mobile-icon" draggable={false} />
+          </button>
+        </>
       )}
 
       {/* Panel */}
@@ -321,7 +352,7 @@ export default function ChatWidget() {
             />
             <Motion.div
               key="panel"
-              className="chat-widget-panel"
+              className={`chat-widget-panel ${keyboardOpen ? 'is-keyboard' : ''}`}
               role="dialog"
               aria-label="Chat widget"
               aria-modal="false"
@@ -459,6 +490,8 @@ export default function ChatWidget() {
                     placeholder={selectedTopic ? 'Type your message…' : 'Select a topic first'}
                     disabled={!selectedTopic || loading}
                     aria-disabled={!selectedTopic || loading}
+                    onFocus={() => setKeyboardOpen(true)}
+                    onBlur={() => setKeyboardOpen(false)}
                   />
                   <button type="submit" disabled={!selectedTopic || loading}>
                     <span className="material-symbols-rounded" aria-hidden>arrow_outward</span>
