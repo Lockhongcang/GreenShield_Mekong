@@ -898,6 +898,7 @@ a.btn .material-symbols-rounded {
   }
 
   .banner {
+    top: 30vh;
     background-size: 150%;
   }
 
@@ -1078,6 +1079,7 @@ a.btn .material-symbols-rounded {
 /* Adjust spacing on smaller screens */
 @media (max-width: 640px) {
   .banner {
+    top: 30vh;
     background-size: 200%;
   }
 }
