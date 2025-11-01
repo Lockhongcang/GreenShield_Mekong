@@ -15,10 +15,19 @@
 .app-scroll {
   height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: none;
   /* disable vertical snap */
   scroll-snap-type: none;
   -webkit-overflow-scrolling: touch;
+  /* avoid accidental horizontal pan and rubber-banding */
+  touch-action: pan-y;
+  overscroll-behavior-x: none;
+}
+
+/* Prevent any residual horizontal scrolling on narrow devices */
+html, body {
+  overflow-x: hidden;
 }
 
 /* each section */
@@ -1158,6 +1167,31 @@ a.btn .material-symbols-rounded {
 .stack-gallery:hover .stack-card:hover .stack-card__overlay {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* Mobile/touch: remove hover/blur/expansion effects for better perf and simple scroll UX */
+@media (hover: none), (pointer: coarse) {
+  .stack-gallery .stack-card {
+    transition: none;
+    transform: none !important;
+    box-shadow: none;
+    filter: none;
+  }
+  .stack-gallery:hover .stack-card:hover,
+  .stack-gallery:not(:hover) .stack-card.is-default {
+    grid-column: auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .stack-gallery:hover .stack-card:not(:hover) {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+  /* Make overlay content always readable without hover */
+  .stack-gallery .stack-card .stack-card__overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 /* Smooth, non-scaling hover for steps stack */

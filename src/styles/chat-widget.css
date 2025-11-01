@@ -33,6 +33,10 @@
     right: -3rem;
     bottom: 1.5rem;
   }
+
+  .cwp-mascot {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -441,10 +445,22 @@
       height: 65vh;
       bottom: 100px;
     }
+  }
 
-    .cwp-mascot {
-      top: -42%;
-      right: 5%;
+  /* Mobile: prevent iOS Safari zoom-on-focus and lighten GPU effects */
+  @media (max-width: 768px) {
+    .cwp-input input {
+      font-size: 16px; /* >=16px prevents viewport zoom on focus */
+      line-height: 1.4;
+    }
+    .cwp-select .ant-select-selector,
+    .cwp-select .ant-select-selection-item,
+    .cwp-select .ant-select-selection-placeholder {
+      font-size: 16px;
+      line-height: 38px;
+    }
+    .chat-widget-panel {
+      backdrop-filter: none; /* drop heavy blur on mobile for perf */
     }
   }
 
