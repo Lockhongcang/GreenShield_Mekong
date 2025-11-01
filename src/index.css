@@ -898,6 +898,7 @@ a.btn .material-symbols-rounded {
   }
 
   .banner {
+    top: 30vh;
     background-size: 150%;
   }
 
