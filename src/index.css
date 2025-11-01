@@ -1315,7 +1315,8 @@ a.btn .material-symbols-rounded {
     width: 28px;
     height: 28px;
     left: 1rem;
-    bottom: 1rem;
+    top: 1rem;    /* move to top-left on mobile */
+    bottom: auto;
     font-size: 0.9rem;
   }
 }

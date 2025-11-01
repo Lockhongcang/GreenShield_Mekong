@@ -16,6 +16,9 @@
   cursor: pointer;
   transition: all 0.05s ease;
   z-index: 100;
+  /* Allow user to scroll through the large visual area */
+  pointer-events: none;
+  touch-action: pan-y;
 }
 
 /* Responsive sizing overrides for the floating chat button (keep base as desktop) */
@@ -96,6 +99,50 @@
     height: 100%;
     object-fit: contain;
     display: block;
+    pointer-events: none;
+  }
+
+  /* Smaller clickable hotspot inside the large visual to avoid blocking scroll */
+  .chat-widget-hotspot {
+    position: absolute;
+    right: 14%;
+    bottom: 14%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 101; /* above image */
+    pointer-events: auto; /* re-enable events only for the hotspot */
+    touch-action: manipulation;
+  }
+
+  @media (max-width: 1024px) {
+    .chat-widget-hotspot {
+      width: 140px;
+      height: 140px;
+      right: 12%;
+      bottom: 12%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .chat-widget-hotspot {
+      width: 130px;
+      height: 130px;
+      right: 10%;
+      bottom: 10%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .chat-widget-hotspot {
+      width: 120px;
+      height: 120px;
+      right: 10%;
+      bottom: 10%;
+    }
   }
 
   .chat-widget-panel {

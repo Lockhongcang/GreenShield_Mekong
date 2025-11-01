@@ -251,44 +251,7 @@ export default function ChatWidget() {
     <>
       {/* Floating open button (hide when panel is open) */}
       {!open && showButton && (
-        <button
-          type="button"
-          aria-label="Open chat"
-          className="chat-widget-button"
-          onClick={() => {
-            setOpen(true);
-            setShowTeaser(false);
-
-            // 🔊 Play Lubi sound mỗi lần mở chat
-            try {
-              let audio = lubiAudioRef.current;
-              if (!audio) {
-                audio = new Audio(LubiSound);
-                audio.preload = 'auto';
-                audio.volume = 0.6;
-                lubiAudioRef.current = audio;
-              }
-              audio.currentTime = 0;
-              const playPromise = audio.play();
-              if (playPromise && typeof playPromise.then === 'function') {
-                playPromise.catch(() => {
-                  // nếu bị chặn autoplay thì phát lại khi user click
-                  const unlock = () => {
-                    try {
-                      audio.currentTime = 0;
-                      audio.play().catch(() => { });
-                    } catch { /* ignore */}
-                  };
-                  window.addEventListener('pointerdown', unlock, { once: true });
-                  window.addEventListener('keydown', unlock, { once: true });
-                  window.addEventListener('touchstart', unlock, { once: true });
-                });
-              }
-            } catch (err) {
-              console.warn('Cannot play Lubi sound', err);
-            }
-          }}
-        >
+        <div className="chat-widget-button" aria-hidden={false}>
           {showTeaser && (
             <div className="chat-widget-teaser" aria-hidden>
               Bạn cần gì đó có <strong>Lubi</strong> lo!
@@ -296,12 +259,51 @@ export default function ChatWidget() {
           )}
           <img
             src={isScrolling ? FlyingImg : NormalImg}
-            alt="Open chat"
+            alt=""
             className="chat-widget-icon"
+            aria-hidden
             draggable={false}
           />
+          {/* Smaller clickable hotspot so scrolling passes through around it */}
+          <button
+            type="button"
+            aria-label="Open chat"
+            className="chat-widget-hotspot"
+            onClick={() => {
+              setOpen(true);
+              setShowTeaser(false);
 
-        </button>
+              // 🔊 Play Lubi sound mỗi lần mở chat
+              try {
+                let audio = lubiAudioRef.current;
+                if (!audio) {
+                  audio = new Audio(LubiSound);
+                  audio.preload = 'auto';
+                  audio.volume = 0.6;
+                  lubiAudioRef.current = audio;
+                }
+                audio.currentTime = 0;
+                const playPromise = audio.play();
+                if (playPromise && typeof playPromise.then === 'function') {
+                  playPromise.catch(() => {
+                    // nếu bị chặn autoplay thì phát lại khi user click
+                    const unlock = () => {
+                      try {
+                        audio.currentTime = 0;
+                        audio.play().catch(() => { });
+                      } catch { /* ignore */ }
+                    };
+                    window.addEventListener('pointerdown', unlock, { once: true });
+                    window.addEventListener('keydown', unlock, { once: true });
+                    window.addEventListener('touchstart', unlock, { once: true });
+                  });
+                }
+              } catch (err) {
+                console.warn('Cannot play Lubi sound', err);
+              }
+            }}
+          />
+        </div>
       )}
 
       {/* Panel */}
