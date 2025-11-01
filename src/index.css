@@ -902,7 +902,7 @@ a.btn .material-symbols-rounded {
   }
 
   .banner-content {
-    height: 50vh;
+    height: 85vh;
     padding: 2rem 1rem;
   }
 }
@@ -1077,18 +1077,8 @@ a.btn .material-symbols-rounded {
 
 /* Adjust spacing on smaller screens */
 @media (max-width: 640px) {
-  .mq-strip {
-    gap: 1.6rem;
-    padding: 0 1.2rem;
-  }
-
   .banner {
     background-size: 200%;
-  }
-
-  .banner-content {
-    height: 50vh;
-    padding: 2rem 1rem;
   }
 }
 
